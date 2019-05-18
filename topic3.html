@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+  <head>
+    <title>CIT261 Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="main.css" type="text/css" rel="stylesheet" media="screen">
+
+  </head>
+  <body>
+    <header>
+      <p class="logo">Denise Goetz CIT261</p>
+      <nav>
+        <ul id="menu" class="top">
+          <li><a href="index.html">Home</a></li>
+        </ul></nav>
+    </header>
+      
+    <main>
+      <h1>Topic: Object Creation Functions, Inheritance, Properties, Methods, Instantiation</h1>
+    
+      <h2>Objects</h2>
+        <p>In JavaScript, objects provide a way for us to store, manipulate, and send data over the network. Object are containers for variables. The names of these variables (for ex. firstName)  are called keys, and are used to access the value inside the variable. The variables in an object are officially called properties. Think of objects as a collection of ‘key:value’ pairs. Here is a simple object.</p>
+        
+        <div class="code">
+        <code>var person = {<br>
+             firstName: ‘John’,<br>
+             lastName: ‘Smith’<br>
+             };<br>
+        </code>
+        </div>   
+        
+        
+        <h3>Properties</h3>
+        <p>A property of an object can be explained as a variable that is attached to the object. Object properties are basically the same as ordinary JavaScript variables, except for the attachment to objects. The properties of an object define the characteristics of the object. </p>
+    
+         
+        <h3>Methods</h3>
+        <p>Actually, I don't like the word method. Let's just use function instead? When I say function, you know what I mean, right?
+          But...that's not technically correct.  To be correct, a function that is the property of an object is called its method.<br><br> Methods can be a property in an object that stores a function. These functions can be used to manipulate the object. Here is another object with properties and methods.</p>
+       
+        <h2>Creating Objects</h2>
+        <p>There are several ways to create objects. I have demonstrated 2 ways. The object person example was created using the Object constructor, which is using the ‘new’ keyword with the in-built Object constructor function.  The object customer example used object initialization. </p> 
+        
+        <h3>Keyword New and Object Constructor</h3>
+        <p>You can create an object using the ‘new’ keyword, in this case, you need to have a constructor function which looks like this. This method is longer to code and not recommended because scope-resolution needs to occur (behind the scene) to determine if constructor function is built-in or user-defined. Unassigned properties of an object are undefined (and not null).</p>
+        <div class="code">
+            <code>var person = new Object();  //create object with new keyword.<br><br>
+              person.firstName = ‘John’;    //now add properties to person object<br>
+              person.lastName = ‘Smith’;    //lastname is a property of person and key to get the value 
+            </code>
+        </div>        
+      
+        <h3>Object Literal Syntax</h3>
+        <p>Another way to create an object is declare and initialize the object in the same step. Simply declare a new variable and assign a comma separated list of key-value pairs inside curly brackets.</p>
+        <div class="code">
+          <code>
+              var customer = {<br>
+              firstName: ‘Sue’,<br>
+               lastName: ‘Brown’,<br>
+              customerId: 4416<br>
+              };
+          </code>
+        </div>
+        
+        
+    </main>
+      
+      
+    <footer>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 5 May 2019 </p>
+    </footer>
+  </body>
+</html>

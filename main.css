@@ -1,0 +1,205 @@
+/*
+Stylesheet for CIT261 website
+*/
+/********** Reset *************/
+* {
+    box-sizing: border-box;
+    margin: 0;
+} 
+/********* Page Sections *******/
+html {
+    background-color: lightcyan;
+
+}
+body {
+    background-color: #f1f1f1;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    width: 95%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+li {
+    line-height: 2em;
+}
+
+/********* Header ************/
+header {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    height: 50px;
+    background-color: #46A29E;
+
+}
+/* logo- my name + class */
+.logo {
+    float: left;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-weight: bold;
+    color: #f1f1f1;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 0;
+}
+/********** nav *************/
+nav a{
+    text-decoration: none;
+    color: #f1f1f1;
+    display: block;
+
+}
+nav ul {
+    list-style: none;
+    position: relative;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    float: right;
+}
+.top li {
+    float: left;
+    width: 80px;
+
+}
+.top li a {
+    display: block;
+    padding: 9px 10px;
+}
+.top li:hover > a {
+    color: black;
+}
+.top li:hover ul {
+    display: block;
+    background-color: buttonface;
+}
+.top li:active > a {
+    color: gray;
+}
+
+/******** Footer *************/
+footer {
+    background-color: #46A29E;
+    width: 100%;
+    max-width: 960px;
+    color: dimgrey;
+    height: 50px;
+    margin: 0 auto;
+    padding: 8px 0 0 15px;
+
+}
+
+
+/******** Main ***********/
+main {
+    max-width: 960px;
+    width: 95%;
+    margin: 50px auto;
+    padding: 0 15px;
+
+}
+
+/******** Headings and Text **********/
+h1 {
+    font-family:"Trebuchet MS", Helvetica, sans-serif;
+    line-height: 1.2em;
+    margin-bottom: 25px;
+    margin-left: 15px;
+    font-size: 1.5em;
+    margin-top: -5px;
+}
+h2 {
+    margin: 30px 0;
+
+}
+h3 {
+
+    margin: 15px 0;
+    font-size: 20px;
+}
+p {
+    margin: 15px 15px;
+    font-size: 1.1em;
+}
+/******** Main links *********/
+main a, main a:visited {
+    text-decoration: none;
+    color: black;
+}
+main a:hover {
+    color: #66e0e0;
+}
+main a:active {
+    color: gray;
+}
+
+/******** All Pages ********/
+section {
+    border-top: 2px solid #46A29E;
+    margin-bottom: 40px;
+
+}
+
+.code {
+    background-color: gray;
+    color: #ffffff;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1.2em;
+    overflow-x: hidden;
+
+}
+.result {
+    background-color: lightgray;
+    color: black;
+    padding: 10px;
+}
+button {
+    margin: 10px 10px;
+    background-color: white;
+}
+label { 
+    width: 100px;
+    display: inline-block;
+}
+
+/******** Topic 1 ********/
+#WordsAppear {
+    display: none;
+    font-size: 120%;
+    color: blue;
+}
+
+
+/******** Topic 2 ********/
+
+/* Next 2 bits are a fake out to get a full sized video on your page */
+/*            .youtube=container     .youtube iframe= makes video as large as container  */
+.youtube{
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0px;
+}
+
+.youtube iframe{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    
+}
+    
+canvas{
+    border: 1px solid black;
+    background: lightblue;
+}
+    
+
+
+

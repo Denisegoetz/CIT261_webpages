@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+  <head>
+    <title>CIT261 Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="main.css" type="text/css" rel="stylesheet" media="screen">
+
+  </head>
+  <body>
+    <header>
+      <p class="logo">Denise Goetz CIT261</p>
+      <nav>
+        <ul id="menu" class="top">
+          <li><a href="index.html">Home</a></li>
+        </ul></nav>
+    </header>
+      
+    <main>
+      <h1>Topic: JSON Parse, Stringify</h1>
+        
+        <h2>JSON</h2>
+        <p>JSON is a JavaScript data-storage format that can be used to exchange information between web services. In JSON notation, an object is formatted as a string. When written in JSON, property keys need to be in double quotes. Values can include strings in double quotes, numbers, booleans, null, arrays and objects. Methods are not allowed. </p>
+        
+        
+<!-- /******** JSON Parse *********/ -->          
+        <hr style="border: 2px solid mediumturquoise;" /> 
+        <h3>JSON Parse </h3>
+        <p>The JSON parse method will take a JSON string and turn it into a JavaScript Object, which is the opposite of stringify.</p> 
+        
+        <p>This first example is doing WAY MORE than needed to provide an example of JSON Parse. Here, I have made a call to a Star Wars API website that gives me a JSON string, JSON.parse puts that data into an object. Then I access a few fields in that object to produce the names of StarWars ships and classifications. </p> 
+        
+        
+        <div class="code">
+          <code>var container = document.getElementById("jsonGet");<br><br>
+            function jsonGetDemo() { <br>    
+            var myRequest = new XMLHttpRequest();<br>  
+            myRequest.open('GET', 'https://swapi.co/api/starships/');<br>  
+            myRequest.onload = function() {<br>
+            var myData = JSON.parse(myRequest.responseText);<br>
+            var htmlString = "";<br> 
+
+            for (i=0; i &lt; myData.results.length; i++){ <br>
+        
+            htmlString += "<p> " + myData.results[i].name + " - &nbsp;" + myData.results[i].starship_class + " ship classifcation </p>"; <br>
+            }<br>
+             container.insertAdjacentHTML("beforeend", htmlString); <br>
+          };<br>
+         myRequest.send();<br>
+        }
+          </code>
+        </div>
+        
+        <p>Star Wars Ships - API Website: https://swapi.co/  <br> </p>
+        <button id="btn" onclick="jsonGetDemo();">JSON GET</button>
+        <div id="jsonGet"></div>
+     
+        <h4>JSON Parse - No API</h4>
+        <div class="code">
+          <code>//JSON string<br>
+            let actor = '{"fname":"Chris","Lname":"Hemsworth","actor":true,"age":35,"features":["Tall","Blond","Buff","Australian","Married"]}'<br><br>// parse string'<br>
+            actor = JSON.parse(actor);<br>
+          </code>
+        </div>
+        
+        <button onclick="jsonParseDemo();">JSON Parse ONLY</button>
+        <div id="jsonParse"></div>
+        
+        
+<!-- /******** JSON Stringify *********/ -->          
+        <hr style="border: 2px solid mediumturquoise;" /> 
+        <h3>JSON Stringify </h3>
+        
+        <p>The JSON stringify method will take a JavaScript object and turn it into a JSON string. Notice that the string doesn't have the message method in it. Functions are not allowed, so JSON.stringify skips over it.</p> 
+        
+        <div class="code">
+          <code>// Create Object<br>
+            let actor = {<br>
+    fname: "Chris",<br>
+    Lname: "Hemsworth",<br> 
+    actor: true,<br>
+    age: 35,<br>
+    features:  ["Tall","Blond","Buff","Australian","Married"],<br>
+    message: function() {return "You are my hero!";}<br>
+                    
+       };<br><br>
+    // stringify object
+    Avenger = JSON.stringify(actor);<br>
+        </code>
+        </div>
+              
+        <button onclick="jsonStrDemo();">JSON GET</button>
+        <div id="jsonStringify"></div>
+      
+    </main>
+      
+      
+    <footer>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 10 May 2019 </p>
+    </footer>
+  </body>
+    <script src="js/topic4.js"></script>
+</html>

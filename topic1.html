@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+  <head>
+    <title>CIT261 Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="main.css" type="text/css" rel="stylesheet" media="screen">
+
+  </head>
+  <body>
+    <header>
+      <p class="logo">Denise Goetz CIT261</p>
+      <nav>
+        <ul id="menu" class="top">
+          <li><a href="index.html">Home</a></li>
+        </ul></nav>
+    </header>
+      
+    <main>
+      <h1>Topic: Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</h1>
+<!-- /******** VARIABLES PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" /> 
+      <h2>Variables</h2>
+        <p>Without variables it would be impossible to code anything. Variables are containers for values. The values can be numbers, strings, arrays function, booleans, etc. To use a variable, first you have to declare it using the keyword var. It is also a good idea to initialize it, or give it a starting value. This can be done in one statement or separately. </p> 
+        <div class="code">
+          <code>var i = "";<br>
+            var number;<br>
+            var number = 0;<br>
+            var valid = false;</code>
+        </div>
+        <p>The values inside variables can be changed by using the assignment operator (=) or by incrementing (number++). There is no need to use the keyword var again on a variable that has already been declared.</p>
+        <div class="code">
+          <code>i = "dog";<br>
+            number-2;<br>
+            valid = true;</code>
+        </div>
+<!-- /******** LOOPS PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" /> 
+      <h2>Loops</h2>
+        
+        <!-- /** for Loop**/ -->
+        
+        <p>Loops are used to repeat a block of code.  If the same thing needs to happen in a program more than once, rather than typing the block of code over and over, a loop can be used to cycle through the code a certain number of times, or until a condition is met.</p>
+        <h3>for loop</h3>
+        <p>for loops repeat until a condition is no longer true. They are useful when you know how many times a loop needs to be repeated. The following for loop will repeat 10 times (stops @ 11th), and concatenate to the loopMsg variable. Then will print a message for every time it goes through the loop.<br> <br>for(initalization; condition; iteration) {statements to be executed} </p>
+        
+        <div class='code'>
+          <code>var loopMsg = ""<br>
+            for (var i = 1; i &lt; 11; i++) {<br>
+            &nbsp;&nbsp;loopMsg += i + " loop, "<br>
+            }<br>
+            document.getElementById('forLoop').innerHTML = loopMsg;</code>
+        </div>
+        
+        <button onclick="demoForLoop();">Try it</button>
+        <div id="forLoop"></div>
+        
+        <!-- /** forEach Loop**/ -->
+        
+        <h3>for each loop</h3>
+        <p>The for each loop is a prototypal method of Array (Even Map and Set). The forEach() method calls a given function/callback every time with each element in an array, according to the index order. Take note, forEach() does not run the given function for array elements having no values.<br><br>
+            
+        What is a prototypal method? First, you need to understand that JavaScript only has one construct that involves inheritance: objects. Each object has a private property which holds a link to another object called its prototype. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype. By definition, null has no prototype, and acts as the final link in this prototype chain.<br><br>
+
+        The forEach() method takes a function as an argument. Most people use an anonymous function as shown. The function consists of three parameters:<br><br>
+            currentValue -  holds the present value being processed,<br>
+            index variable - holds the index of the value in that particular array,<br>
+            array variable - holds the total array passed.<br><br>
+            
+        &nbsp;&nbsp;&nbsp;&nbsp;arrayName.forEach(function(currentValue, index, array)  {function body})
+        </p>
+        <div class="code">
+          <code>var array = [10, 20, 30, 40, 50];<br>
+                var totalArray = 0;<br>      
+            myArray.forEach(function(item, index){<br>
+             &nbsp;&nbsp;totalArray = totalArray + item;<br>
+                }<br>
+              );<br>
+            document.getElementById('forEachLoop').innerHTML =  "for each total array = " + totalArray;           
+          </code>
+        </div>
+        <p>The use of forEach() method has made iterating over an array very simple. We don’t have to worry about looping variable, conditions or anything else, it will take care of all the matters for iterating.</p>
+        
+        <button onclick="forEachLoop();">Try it</button>
+        <div id="forEachLoop"></div>
+        
+        
+        <!-- /** WHILE Loop**/ -->
+        
+        <h3>while loop</h3>
+        <p>A while loop works whether or not you know how many times the block of code needs to be repeated. It repeats the code until a certain condition is met. Here are some examples:</p>
+        <code>while( i &lt; 10)</code>
+        <p>This will repeat the loop until the counter i reaches 10.</p>
+        <code>while(!valid)</code>
+        <p>This will repeat as long as the boolean value of the variable valid is false.</p>
+        <p>The ex. below will go thru all the values in the array and if it finds the Ariel, it will make it lowercase.</p>
+        <div class="code">
+            <code>var princess = ['Cinderella', 'Snow White', 'Rapunzel', 'Ariel', 'Belle', 'Jasmine']; <br>
+                  var j = 0;  <br>
+                  pList = ""; <br>
+               while (j &lt; princess.length) { <br>
+                 &nbsp;&nbsp;  if (princess[j] === 'Ariel'){ <br>
+                 &nbsp;&nbsp;  princess[j] = princess[j].toLowerCase(); <br>
+                 &nbsp;&nbsp; } <br>
+                 &nbsp;&nbsp; pList += princess[j] + ", "; <br>
+                &nbsp;&nbsp; j++; <br>
+                 } <br>
+               document.getElementById('whileLoop').innerHTML = pList; <br>
+            </code>
+        </div>
+
+        <button onclick="whileLoop();">Try it</button>
+        <div id="whileLoop"></div>
+        
+        <h3>do while loop</h3>
+        <p>A do while loop is similar to a while loop, except it runs through once before checking to see if the condition is met. A do while loop should be used if the code needs to be executed at least once whether the condition is met or not. Here is an example of a do while loop. Notice on the example, that the condition is not true. However, the result includes one dog because the loop executed once before checking the condition.</p>
+        <div class="code">
+          <code>var cnt = 1;<br>
+            var loopMsg = "";<br>
+            do {<br>
+             loopMsg += "<p> " + cnt + "  Scoop(s) of ice cream </p>"<br>
+             cnt += 1;<br>;
+            } while (cnt &lt;= 5)<br>
+            document.getElementById('doWhileLoop').innerHTML = loopMsg;</code>
+        </div>
+        <button onclick="doWhileLoop();">Try it</button>
+        <div id="doWhileLoop"></div>
+        
+<!-- /******** CONDITIONAL STATEMENTS PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" /> 
+      <h2>Conditional Statements</h2>  
+      <p>Conditional statements allow for decision making within a program. Certain blocks of code will be executed or skipped depending on certain conditions.  There are several different kinds of conditional statements. They include:</p>
+
+       <h3>if statements</h3>
+        <p>If statements should be used when the condition can be either true or false.  If the condition is true, the block of code is executed. If it is false, the block is skipped.</p>
+        
+         <div class="code">
+            <code>var princess = ['Cinderella', 'Snow White', 'Rapunzel', 'Ariel', 'Belle', 'Jasmine']; <br>
+        
+                 &nbsp;&nbsp;  if (princess[j] === 'Ariel'){ <br>
+                 &nbsp;&nbsp;  princess[j] = princess[j].toLowerCase(); <br>
+                 } <br>
+                Result: Cinderella, Snow White, Rapunzel, ariel, Belle, Jasmine,
+            </code>
+        </div>
+        
+        
+        <h3>if else statements</h3>
+        <p>An if else statement should be used when you have one condition, with two different blocks of code to be executed depending on whether the condition is true or false. If the condition is true, run the first block of code and skip the second, else if it is false, skip the first block and run the second.</p>
+        
+        <div class="code">
+            <code>var numberChosen = document.getElementById("numberInput").value; <br>
+                  let message = ""; <br>
+                
+                if (numberChosen &gt; 5) { <br>
+        
+                   &nbsp;&nbsp; message = "Hey, your number is higher than 5." <br>
+                 }else{ <br>
+                    &nbsp;&nbsp; message = "Hey, your number between 1 and 5, or 5 itself."<br>
+                  }<br>
+                     document.getElementById('ifElse').innerHTML = message;<br>
+        
+            </code>
+        </div>
+
+        <div>
+          <p>Enter a number from 1 to 10.</p>
+          Enter a number <input id="numberInput">
+          <button type="button" onclick="ifElse()">Submit</button><br>
+          <div id="ifElse"></div>
+        </div>
+
+        
+        <h3>if else if statements</h3>
+        <p>Multiple if...else statements can be nested to create an else if clause. An if else statement is useful when there are several different conditions, each with different results. The first condition is checked, and if it is true, the first block of code is executed and the rest of the if else statement is skipped.  If the first is false, the first block of code is skipped and the second condition is checked. This is repeated until a condition is found to be true, and its corresponding block of code is executed.</p>
+        
+        <p>Once a block of code is executed the rest of the if else is skipped. Even if a later condition is true within the if else, it will be skipped. The final part of an if else statement is an else statement, without a condition. The final else block of code is executed if none of the conditions are true.</p> 
+        
+        <p>This code checks for different visitors that come to the house. A unique message appears per visitor.</p>
+        
+        <div class="code">
+            <code>var visitor = document.getElementById("numberInput").value; <br>
+                  let message = ""; <br> <br>
+                
+                  if(visitor == "Mom"){ <br>
+	              message = "Ready to go shopping?"; <br>
+                  }else if(visitor == "Neighbor") { <br>
+	              {message = "Want to borrow eggs?"; <br>
+                  }else if(visitor == "Police"){ <br>
+	              message = "Did my son call 911 again?"; <br>
+                  } else {  <br>
+	              message = "How do you do?"; <br>
+                  }<br>
+                  document.getElementById('ifElseif').innerHTML = message;<br>
+            </code>
+         </div>
+
+        <div>
+          <br><p>You are a visitor. Choose Mom, Neighbor, Police or enter anything else. Spell as shown.</p>
+          Enter a visitor <input id="visitorInput">
+          <button type="button" onclick="ifElseif()">Submit</button><br>
+          <div id="ifElseif"></div>
+        </div>
+        
+        
+        <h3>switch statements</h3>
+        <p>A switch statement is very helpful in the situation where there is one condition to be checked, but many different options of what that condition could be. It is similar to an if else if statement, but it takes less code to write, and it is easier to read and understand. For instance, if you had a list of options a user could enter, and a each option would produce a different result, a switch would be a good choice. </p>
+        <p>A switch is structured differently than an if else if statement.  It starts with the keyword switch and a variable inside parenthesis followed by curly brackets.  Next there are a list of cases, with possible values followed by a colons, with  blocks of code to be executed; At the end of each block of code, you need to put the word "break;" to skip the rest of the switch. Finally, you can add an optional default, with a block of code to be executed if none of the options are correct.</p><br>
+        
+        <div class="code">
+            <code>var foodChoice= document.getElementById("foodInput").value; <br>
+                  let message = ""; <br> <br>
+            
+                  switch (foodChoice) { <br> 
+                    &nbsp;  case "milk":<br>        
+                    &nbsp; case "Milk":<br>
+                   &nbsp;&nbsp;        message = "Milk is a good choice. Approximate Price is $2.50.";<br>
+                   &nbsp;&nbsp;        break;<br>
+                    &nbsp;case "eggs":<br>
+                    &nbsp;case "Eggs":<br>
+                   &nbsp;&nbsp;        message = "Eggs are a great choice. A good cheap protein. Approximate Price is $1.89.";<br>
+                   &nbsp;&nbsp;        break;<br>
+                    &nbsp;case "bread":<br>
+                    &nbsp;case "Bread":<br>
+                   &nbsp;&nbsp;        message = "Bread is an okay choice. It's cheap, but you'll be hungry soon. Approx. Price is $2.39.";<br>
+                   &nbsp;&nbsp;        break;<br>
+                      &nbsp;case "cereal":<br>
+                      &nbsp;case "Cereal":<br>
+                      &nbsp;case "oatmeal":<br>
+                      &nbsp;case "Oatmeal":<br>
+                   &nbsp;&nbsp;        message = "Cereal/Oatmeal is an okay choice depending on which type, but you'll be hungry soon. Approximate Price is $3.24.";<br>
+                   &nbsp;&nbsp;        break;<br>
+            
+                     &nbsp;default:<br>
+                     &nbsp;&nbsp;       message = "Don't buy junk food. It costs more and you'll be hungry fast.";<br>
+                 }<br>
+            
+                document.getElementById('switchChoice').innerHTML = message;
+                
+            </code>
+        </div>
+        
+       <div>
+          <br><p>You don't have food at home and you only have $10. What should you buy? </p>
+          Enter food choice <input id="foodInput">
+          <button type="button" onclick="switchFood()">Submit</button><br>
+          <div id="switchChoice"></div>
+        </div>
+        
+<!-- /******** ARRAY PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />    
+      <h2>Arrays</h2>
+        <p>Arrays allow you to store multiple values in one variable. There are two ways to create an array.<p>
+        <p>Declare a new variable and then use the assignment operator to add a bracketed comma separated list.</p>
+        <p>Declare a new variable and then use the new keyword to create a new array with the number of array elements in parenthesis. In this case, the elements in the array will be undefined and need to be initialized or assigned values. </p>
+        
+        <div class="code">
+          <code>var places = ['Paris', 'England - Big Ben’s mighty clock', 'South Dakota - Mount Rushmore'];<br> 
+          var colors = new array(3);<br>   
+          </code>
+        </div>
+        <p>To access an element in an array, you use the variable name followed by the index of the element in brackets. Remember the first element in an array has an index of 0. You can add or replace certain elements in an array using the assignment operator. You can use a for loop to access all the elements in an array.</p>
+        <div class="code">
+          <code>places[0]; // The value is currently "Paris"<br>
+            colors[0] = "white"; // The 0 element is the first in the array. (arrays are zero based);<br>
+            colors[1] = "green";<br>
+            colors[2] = "blue";
+          </code>
+        </div>  
+        
+        
+      <p>&nbsp;(1) Paris <br>
+        &nbsp;(2) England - Big Ben’s mighty clock<br>
+        &nbsp;(3) South Dakota - Admire Mount Rushmore<br>
+        &nbsp;(4) New York - Statue of Liberty<br>
+        &nbsp;(5) Arizona - Grand Canyon<br>
+        &nbsp;(6) Chile - Easter Island<br>
+        &nbsp;(7) Greece - Acropolis of Athens<br>
+        &nbsp;(8) Russia - Saint Basil’s Cathedral & the Red Square<br>
+        &nbsp;(9) England - Stonehenge<br>
+        (10) China - Great Wall of China<br>
+        (11) Rome, Italy - Visit the Colosseum<br>
+        (12) Peru - Machu Picchu<br>
+        (13) India - Taj Mahal<br>
+        (14) Brasil - Hike to Christ the Redeemer<br>
+        (15) Australia - Great Barrier Reef<br>
+        (16) New York - Niagara Falls<br>
+        </p>
+        <h3>Where would you visit? Choose 3 by entering the number.</h3>
+        Top Choice:   <input type="number" id="firstChoice">
+        Second Best:  <input type="number" id="secondChoice">
+        Third Choice: <input type="number" id="thirdChoice">
+        <button onclick="hideShowWords('WordsAppear'); showChoices();">Done Choosing</button>
+        <div id=WordsAppear>Oh.., The Places you want to go:</div>
+        <div id="WantToGo1"></div>
+        <div id="WantToGo2"></div>
+        <div id="WantToGo3"></div>
+        
+        
+<!-- /******** ASSOCIATIVE ARRAY PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />    
+      <h2>Associative Arrays</h2>
+      <p>Associative Arrays are objects. They are similar to arrays in that they allow you to store multiple values in one variable. They are different than arrays in several key ways. First, instead of having indexes, the elements in an associative array have key value pairs. This makes the way you create an associative array, and the way you access elements in it different than arrays.</p>
+      <p>To create an associative array, you declare the variable then use the assignment operator to add a list of key value pairs inside a curly bracketed list. </p>
+      <p>Enclose the associative array in curly brackets just as you would when defining and object. It's the same as working with objects. Key value pairs have two parts, the key and the value. The value is the information being stored in the array, and the key is a keyword that will be used to access the value. Here is an example.</p>
+      
+      <div class="code">
+          <code>var actor = {fname: "Chris",<br>
+                             Lname: "Hemsworth",<br>
+                              actor: true,<br>
+                              age: 35,<br>
+                              features: ["Tall","Blond","Buff","Australian","Married"]};<br>        
+          </code>
+      </div>
+        <p>To access a value, you use the keyword associated with it. You can't use an index because they aren't indexed like an ordered array.  For example, actor[3] will return as undefined.  Instead you would access a value in one of the two ways shown below. </p>
+        <div class="code">
+          <code>actor.age;<br>
+            actor['age'];<br><br>
+            var info = actor.fname + " " + actor["Lname"] + " is " + actor.age + " years old.";
+          </code>
+        <p>Notice there is an array within this associative array. How would you access that? </p>
+            <code>actor.features[0];<br>
+            actor['features'][1];<br><br>
+            var info = actor.fname + " " + actor["Lname"] + " is " + actor.age + " years old and " + actor.features[3] + ".";
+            </code>
+            
+        </div>
+        <button onclick="AArray();">Try it</button>
+        <div id="AArray" ></div><br>
+        <p>How do I get all the information out of an associative array?  It is the same as a standard array.
+        To access all of the values inside an associative array, use a for loop, previously discussed on this page.</p>
+  
+<!-- /******** FUNCTIONS PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />    
+        <h2>Functions</h2>
+        <p>On this page you have had opportunities to "Try it" by clicking a button to get the result. Anytime you clicked a button, JavaScript code was listening and executed in response. </p>
+
+        <p>A function is a block of reusable code that needs to be called for it to run. Information, or arguments, can be passed into the function, and a result can be returned to the place where the function was called. Functions can be typed once but used many times and return different results depending on the information or arguments passed in.</p>
+        <p>A function has two parts, the function signature, and the function body.</p>
+        <h3>Function Signature</h3>
+        <p>The function signature has the function keyword, a function name, and a list of comma separated parameters in parenthesis.</p>
+
+        <div class="code">
+          <code>function ageYear(year, age) {</code>
+        </div>
+        
+        <h3>Parameters</h3>
+        <p>Parameters are a way to pass arguments into a function. Parameters are listed in the function signature inside parenthesis, and they tell the pieces of information needed to make the function run correctly.  When the function is called, an argument, or value, is provided for each parameter, and those values can be used inside the function. The ageYear function has two parameters called year and age. What gets passed into it (the values)...like 2025 and 24 are arguments.</p>
+        
+        <h3>Function Body</h3>
+        <p>The function body has a group of statements that are executed when the function is called.  One of those statements can be a return statement, which will pass a value back to the place where the function was called.</p>
+   
+        
+          <div class="code">
+            <code>
+            function ageYear(year, age){<br>    
+            &nbsp;&nbsp;var currentYear = 2019;<br>
+            &nbsp;&nbsp;var yearDiff    = year - currentYear;<br>
+            &nbsp;&nbsp;var futureAge   = age +  yearDiff;<br>
+            &nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;return futureAge;<br>
+            }
+          </code>
+        </div>
+        
+         <p>In order for this function to run, it has to be called. In this case, it will be called when the button is clicked. Please enter a future year and your current age to find out how old you will be in that year.</p>
+        <div>
+          <p><b>How old will you be in a given year?</b></p>
+          Enter a future year<input id="yearInput"><br>
+          Enter your current age<input id="ageInput">
+          <button type="button" onclick="getYearInput()">Calculate</button><br>
+          <div id="outputAge"></div>
+        </div>
+        
+        
+    </main>
+      
+      
+    <footer>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 10 May 2019 </p>
+    </footer>
+  </body>
+<script src="js/topic1.js"></script>
+</html>
+    
+        

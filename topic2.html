@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+  <head>
+    <title>CIT261 Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="main.css" type="text/css" rel="stylesheet" media="screen">
+
+  </head>
+  <body>
+    <header>
+      <p class="logo">Denise Goetz CIT261</p>
+      <nav>
+        <ul id="menu" class="top">
+          <li><a href="index.html">Home</a></li>
+        </ul></nav>
+    </header>
+      
+    <main>
+      <h1>Topic: HTML5 Tags - Video, Audio, and Canvas</h1>
+         <hr style="border: 2px solid mediumturquoise;" />
+        
+       <!-- /******** AUDIO PORTION *********/ -->
+        <h2>Audio Tag</h2>
+        <p>The HTML audio tag plays embedded audio files and the supported file formats are mp3, wav, and ogg. The opening audio tag can have attributes similar to the video tag, such as controls, autoplay, loop, muted, volume, etc. It allows for one or more source tags for flexiblity. For example, if the first mp3 isn't supported by the users browser, it will try the ogg file and keeps going down the list until something works or the message is displayed. </p>
+        <div class="code">
+          <code>
+            &lt;audio controls&gt;<br>
+            &nbsp;&nbsp;&lt;source src="audio.mp3" type="audio/mp3"&gt;<br>
+            &nbsp;&nbsp;&lt;source src="video.ogg" type="audio/ogg"&gt;<br>
+            &nbsp;&nbsp;Your browser does not support the audio element.<br>
+            &lt;/audio&gt;
+          </code>
+        </div>
+        
+         <div>
+           <br>
+           <h3> Presentation on Audio </h3>
+             <h4>Sample Audio File </h4>
+                   <audio controls>
+                      <source src="handel-ombra-mai-fu.mp3" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                   </audio> 
+         </div> 
+        
+         <hr style="border: 2px solid mediumturquoise;" />
+        
+        
+        <!-- /******** VIDEO PORTION *********/ -->
+        
+        <h2>Video Tag</h2>
+        <p>The video tag makes it easy to embed videos into a website. HTML5 video includes an opening and closing video tag, with one or more source tags to provide alternate video file formats.</p>
+        <div class="code">
+          <code>
+            &lt;video width="300" height="200" controls&gt;<br>
+            &nbsp;&nbsp;&lt;source src="video.mp4" type="video/mp4"&gt;<br>
+            &nbsp;&nbsp;&lt;source src="video.ogg" type="video/ogg"&gt;<br>
+            &nbsp;&nbsp;Your browser does not support the video tag.<br>
+            &lt;/video&gt;
+          </code>
+        </div>
+      
+      <p>Supported video formats include mp4, webm, and ogg. Providing multiple formats make it more likely to have a video format that is supported by the user's browser. The first recognized format is used.</p>
+      <p>The opening tag can have several attributes. </p> 
+          <ol>
+            <li>Providing height/width attributes keep the webpage from flickering as the video loads.</li> 
+            <li>controls will cause controls like pause, play, etc to show in the video window.</li>
+            <li>autoplay will automatically play the movie on load. This is usually not a good idea as it may annoy users.</li>
+            <li>loop will make the video repeat automatically.</li>
+            <li>poster="image.jpg" will display the image in the link until the video plays.</li>
+            <li>An optional src attribute can be used in the opening tag to provide the video url instead of in a &lt;source&gt; tag.</li>
+            <li>There are many other attributes that can be added to a video tag.</li>
+          </ol>
+        
+        
+        <h3>YouTube Videos</h3>
+        <p>To include a YouTube video on your webpage, you need to embed it with an iframe. You can copy the Embeded link by selecting SHARE in YouTube and clicking on Embed. There are some options you can deselect or select. Then you copy the code and insert it into the HTML. There is one problem with YouTube iframes. To get the screen to show up at a decent size and proper ratio you need to "trick" the iframe using some CSS. Enclose your iframe in div with a class and use the CSS below. 56.26% is supposed to be a magical ratio for the screen size.</p>
+        <div class="code">
+          <code> 
+           /* This is to fake out to get a full sized video on your page */<br>
+           /*  .youtube=container    and   .youtube iframe= makes video as large as container  */<br><br>
+             &nbsp;&nbsp;.youtube{<br>
+             &nbsp;&nbsp;   position: relative;<br>
+             &nbsp;&nbsp;   padding-bottom: 56.25%;<br>
+             &nbsp;&nbsp;   padding-top: 25px;<br>
+             &nbsp;&nbsp;   height: 0px;<br>
+            }<br>
+             &nbsp;&nbsp;.youtube iframe{<br>
+             &nbsp;&nbsp;   position: absolute;<br>
+             &nbsp;&nbsp;   left: 0;<br>
+             &nbsp;&nbsp;  right: 0;<br>
+             &nbsp;&nbsp;   top: 0;<br>
+             &nbsp;&nbsp;   bottom: 0;<br>
+             &nbsp;&nbsp;   height: 100%;<br>
+             &nbsp;&nbsp;   width: 100%;<br>
+            } 
+          </code>
+        </div> 
+        
+         <h3>Presentation on Video</h3>
+        
+         <h3 class="video_title">The Poor Man's Meal!</h3>
+        
+          <div class="youtube">
+            <iframe  src="https://www.youtube.com/embed/wVbV8fdCZLE?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe> 
+          </div>
+        
+        
+        
+         <br><br><br>
+         <hr style="border: 2px solid mediumturquoise;" />
+
+         <!-- /******** CANVAS PORTION *********/ -->
+  
+        
+        <h2>Canvas tag</h2>
+        <p>The canvas tag is a container for graphics, which can be as large as the entire screen or much smaller. Javascript can be used with the canvas tag to enable drawing on a webpage, displaying graphics, animating objects, etc.</p>
+        <h3>Define tag in HTML</h3>
+        
+        <div class="code">
+          <code>
+            &lt;canvas id="myCanvas" width="300" height="300"&gt;<br>
+            
+            &nbsp;&nbsp;Your browser does not support the canvas tag.<br>
+            &lt;/canvas&gt;
+          </code>
+        </div>
+        
+        <p>The id is necessary to access the canvas through JavaScript. Width and height can also be used to define the size of the canvas. Once the canvas is defined in the HTML, use JavaScript to draw lines, shapes, and text, display and animate images, etc. You should also add a text default for browsers that don't support the canvas tag.</p>
+        <h3>Draw with JavaScript</h3>
+        <p>In order to use the canvas, JavaScript is needed. First, select the canvas element using getElementById().</p>
+        <p>Next define a rendering context using getContext(2d).  (Other contexts, such as 3d are available.)</p>
+        <p>Then define what you want to draw in the canvas element. Define the fill color or pattern with fillStyle, make a rectangle with fillRect(), a circle with arc(), text with fillText(), or draw a line with lineTo().  Finally, to draw the shape or line add stroke(), and to fill the shape add fill(). The code below is  for a rectangle.</p>
+        
+        <div class="code">
+          <code>
+              function draw() { <br>
+              var c = myCanvas.getContext('2d'); <br>
+              c.fillStyle = 'rgba(255, 25, 52, 0.8)';<br><br>
+    
+                    /* (x, y, width, height)  - Cooridinates are from top left corner of screen*/<br><br>    
+              c.fillRect(20, 10, 80, 140);s <br>
+           } 
+          </code>
+        </div>
+
+         <h3>Example</h3>
+        
+         <canvas id='myCanvas' width='300' height='300'>
+            Canvas tag not supported
+         </canvas>
+         <button onclick="draw()">Rectangle</button>
+         <button onclick="draw2()">Circle</button>
+         <button onclick="draw3()">Line1</button>
+         <button onclick="draw4()">Line2</button>
+         <button onclick="draw5()">Line3</button>
+        
+    </main>
+      
+    <footer>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 5 May 2019 </p>
+    </footer>
+  </body>
+<script src="js/topic2.js"></script>
+</html>
+    
