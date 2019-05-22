@@ -21,13 +21,71 @@
     <main>
       <h1>Topic: Using XMLHTTPRequest to Consume a JSON Web Service</h1>
 
+        <h2>AJAX</h2>
+        <p>AJAX stands for Asynchronous JavaScript And XML. This can be misleading because AJAX doesn't always use the XML format. In fact, JSON has become more popular because it's lightweight. You can fetch plain text as well. AJAX uses the browser built-in XMLHttpRequest object (to request data from a web server) and JavaScript and HTML DOM (to display or use the data).</p> 
         
-        <p>Air Quality in Cities  - API Website: https://api.openaq.org/v1/cities <br><br>
-        A huge amount of environmental data is available for free at https://docs.openaq.org/ </p>
+        <h2>XMLHTTPRequest</h2>
+        <p>An XMLHTTPRequest provides a way to update part of a webpage without having to reload the whole page. The XMLHTTPRequest object calls a webservice, and when the response is ready, it can be used to update the webpage. </p>
+        <p>XMLHTTPRequests can run synchronously or asynchronously. If it runs synchronously, functions on the webpage will wait until response has been received before continuing. If asynchronous, the request will run in the background, so the rest of the webpage can continue to function. Once the response has been fully received, the onreadystatechange function will run.</p>
+        
+        <h3>Consuming a JSON Web Service</h3>
+        <p>There are web services, or Application Program Intefaces (API) that provide information for use in websites and apps. The information is obtained using an XMLHTTPRequest. The information is requested using a URL that has the address of the API, as well as parameters that specify what information is desired. Some API's are free, and some require payment. Now days, most API's require that you register with them and keep a key to access their data. The data is received in JSON format and needs to be parsed using JSON.parse.</p>
+        
+        <h3>Types of Requests</h3>
+        <h4>Synchronous</h4>
+        <p>Here is a simple synchronous XMLHTTPRequest. First create a new XMLHTTPRequest object, initialize the request using .open(), send the request, and add a block for code of what to do with the response.</p>
+        
+        <div class="code">
+          <code>
+            let xhr = new XMLHttpRequest();<br> 
+            xhr.open("GET", url, false);<br>
+            xhr.send();<br>
+            // block of code to use response. 
+          </code>
+        </div>
+        
+        <p>In the open function, there are 2 required arguments and 3 optional arguments. The first argument is either "GET" if requesting information or "POST" if sending information. The second argument is a URL for the server you are communicating with. The third argument is either  false for a synchronous request or true for asynchronous. If not suppied, the third argument will default to true. The fourth and fifth, not pictured here, are username and password. Some APIs require membership and payment for their service, so a username and password are required.</p>
+        
+        <h4>Asynchronous</h4>
+        <p>Now let's look at an asynchronous XMLHTTPRequest. There are a couple of differences. After creating the new XMLHTTPRequest object, add an onreadystatechange function with the block of code to be executed after the response is received. Then add the open and send functions. Checking for a 404 status would help catch if the API isn't available. <b>Note:</b> On my Topic 4 page, JSON Parse, I call a Star Wars API using an onload function which is also an asynchronous call. </p>
+        
+        <div class="code">
+          <code>
+              
+        myRequest.onreadystatechange = function() {<br>
+
+            var htmlString = "";<br>
+      
+     &nbsp;if (myRequest.readyState == 4 &amp;&amp; myRequest.status == 200) {<br>
+     &nbsp;&nbsp;var myData = JSON.parse(myRequest.responseText);<br>
+         
+     &nbsp;&nbsp;for (i=0; i &lt; myData.results.length; i++){<br>
+        
+     &nbsp;&nbsp;htmlString += "<p><b>" + myData.results[i].city + "</b>  &nbsp; Country= " + myData.results[i].country + " Count= " + myData.results[i].count + "</p>";
+     &nbsp;&nbsp;} <br>
+     &nbsp;  };<br>
+      
+     &nbsp;if (myRequest.status == 404) {<br>
+     &nbsp;&nbsp;htmlString += "Air Quality Data Resoucce NOT AVAILABLE - 404";<br>
+     &nbsp; };<br>
+      
+     &nbsp;container.insertAdjacentHTML('beforeend', htmlString);<br>
+       }<br>
+       myRequest.open('GET', 'https://api.openaq.org/v1/cities', true); <br>     
+       myRequest.send(); <br> 
+                
+            </code>
+        </div>
+        
+        <p>The anonymous onreadystatechange function contains the code we want to execute if our asycn call goes well. This means it won't be executed until the response is received. Inside the function is an if statement to make sure the response has been fully downloaded and it has a OK (200) status code. Only then is the block executed.</p>
+        <p>On the open function, notice that the third parameter is true for asynchronous XMLHTTPRequests. If I didn't specify true, it would still run an async request because that is the default. Also notice, I don't have a username and password for the 3rd and 4th arguments. The website I chose didn't require me to register and get a username and password (sometimes called key).</p>
+        
+        <hr style="border: 2px solid mediumturquoise;" /> 
+        <p>Air Quality in Cities  - API Website: https://api.openaq.org/v1/cities <br>
+        A huge amount of environmental data is available for free at https://docs.openaq.org/ This code runs and gets the city and air quality data from this site. The API's have many options for data to obtain and that is up to your needs.</p>
         <button onclick="jsonGetDemo();">JSON GET</button>
         <div id="jsonGet"></div>
-        
-         
+       
       
     </main>
       

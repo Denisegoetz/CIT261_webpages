@@ -12,7 +12,8 @@ html {
 
 }
 body {
-    background-color: #f1f1f1;
+    /* backgroud is rich tan color */
+    background-color: #DEC79B;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     width: 95%;
     max-width: 960px;
@@ -94,6 +95,8 @@ footer {
 
 /******** Main ***********/
 main {
+    /* backgroud is Benjamin Moore - white chocolate */
+    background-color: #ede6d6;
     max-width: 960px;
     width: 95%;
     margin: 50px auto;
@@ -143,7 +146,7 @@ section {
 }
 
 .code {
-    background-color: gray;
+    background-color: grey;
     color: #ffffff;
     padding: 10px;
     margin: 10px 0;
@@ -200,6 +203,4 @@ canvas{
     background: lightblue;
 }
     
-
-
 
