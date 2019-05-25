@@ -25,24 +25,71 @@
         <p>In JavaScript, objects provide a way for us to store, manipulate, and send data over the network. Object are containers for variables. The names of these variables (for ex. firstName)  are called keys, and are used to access the value inside the variable. The variables in an object are officially called properties. Think of objects as a collection of ‘key:value’ pairs. Here is a simple object.</p>
         
         <div class="code">
-        <code>var person = {<br>
+        <code>// longer version <br>
+            let person = new Object();<br><br>
+             person.firstName = ‘John’;<br>
+             person.lastName = ‘Smith’;<br>
+        </code>
+        </div>   
+        
+        <div class="code">
+        
+        <code>// short hand version<br>
+           let person = {<br>
              firstName: ‘John’,<br>
              lastName: ‘Smith’<br>
              };<br>
         </code>
         </div>   
-        
+  <!-- /******** PROPERTIES PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" />       
         
         <h3>Properties</h3>
         <p>A property of an object can be explained as a variable that is attached to the object. Object properties are basically the same as ordinary JavaScript variables, except for the attachment to objects. The properties of an object define the characteristics of the object. </p>
     
-         
+   <!-- /******** METHODS PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        
         <h3>Methods</h3>
         <p>Actually, I don't like the word method. Let's just use function instead? When I say function, you know what I mean, right?
-          But...that's not technically correct.  To be correct, a function that is the property of an object is called its method.<br><br> Methods can be a property in an object that stores a function. These functions can be used to manipulate the object. Here is another object with properties and methods.</p>
+          But...that's not technically correct.  To be correct, a function that is the property of an object is called a method.<br><br> Methods are a property in an object that stores a function. These functions can be used to manipulate the object. Here is an object with properties and methods. The first method concatenates the properties of this object into a sentence.  The second function increases the age of the person object by one. The output is displayed on the page as it is rendered.</p>
+        
+        
+        <div class="code">
+          <code>
+            // add method at creation of object<br> 
+            let Person = {<br>
+            &nbsp;&nbsp;fname: "Sue",<br>
+            &nbsp;&nbsp;Lname: "Brown",<br>
+            &nbsp;&nbsp;job: "Teacher",<br>
+            &nbsp;&nbsp;age: 46,<br>
+            &nbsp;&nbsp;display: function() {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;return this.fname + " " + this.Lname + " works as a " + this.job + " at age " +<br>&nbsp;&nbsp; this.age;},<br> 
+            &nbsp;&nbsp;updateAge: function() { return ++person.age; }<br>
+            };<br>
+            <br>   
+            // call message function in Person object<br>
+            document.getElementById("book1result").innerHTML = "book1.message: " + book1.message();<br>
+            document.getElementById("ageChange").innerHTML = "Next year " + Person.fname + " will be " + Person.updateAge() + "."; 
+            
+          </code>
+        </div>
+      
+        
+         <div class="result">
+          <div id="person"></div>
+          <div id="ageChange"></div>
+        </div>
+        
+   <!-- /******** CREATING OBJECTS PORTION *********/ -->
+      <br>
+      <hr style="border: 2px solid mediumturquoise;" />           
+        
+        
+        
        
         <h2>Creating Objects</h2>
-        <p>There are several ways to create objects. I have demonstrated 2 ways. The object person example was created using the Object constructor, which is using the ‘new’ keyword with the in-built Object constructor function.  The object customer example used object initialization. </p> 
+        <p>There are several ways to create objects. In the first example, the object person  was created using the Object constructor, which is using the ‘new’ keyword with the in-built Object constructor function. Constructors are wonderful because they are like a blueprint or templet for an object. You would create an object constructor when you need to have many of those "type" objects.  For example, a game might have only one world and in this case it is best to create one object. The game may have many users. In this case, it would be best to have a constructor to create as many users needed. </p> 
         
         <h3>Keyword New and Object Constructor</h3>
         <p>You can create an object using the ‘new’ keyword, in this case, you need to have a constructor function which looks like this. This method is longer to code and not recommended because scope-resolution needs to occur (behind the scene) to determine if constructor function is built-in or user-defined. Unassigned properties of an object are undefined (and not null).</p>
@@ -66,11 +113,100 @@
         </div>
         
         
+        <h3>Constructor Function</h3>
+        <p>Instead of hardcoding objects, use a constructor when you will have many objects of the same type.  They provide consistency across the same type of object, and to save a lot of typing. I can write a constructor for a person type of object, and then use it to instantiate new person objects. Constructor names should be capitalized to distinguish them from regular functions. Notice that in (age parameter) of the constructor can have a default value for age.</p>
+
+        <div class="code">
+          <code>let People = function(fname, Lname, job, age = 20){ <br>
+            &nbsp;&nbsp;this.fname = fname;<br>
+            &nbsp;&nbsp;this.Lname = Lname;<br>
+            &nbsp;&nbsp;this.job = job;<br>
+            &nbsp;&nbsp;this.age = age;<br>
+            &nbsp;&nbsp;this.display = function() { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;return this.fname + " " + this.Lname + " works as a  " + this.job + " at age " + this.age;},<br>
+            &nbsp;&nbsp;this.updateAge = function() { return ++person.age; } <br>
+            };</code>
+        </div>
+        
+        
+        <h3>Instantiation</h3>
+        <p>With the People constructor function, it is now possible to instantiate or create new people objects. To do this, declare a new variable, call the People constructor function, and add arguments for the new people, like below. </p>
+        
+        <div class="code">
+          <code>
+            let people1 = new People("Sue", "Smith", "Teacher", 42);<br>
+            let people2 = new People("John", "Jones", "Pilot");<br>
+              <br>
+            document.getElementById("people1").innerHTML = "People Object #1-  " + people1.display();<br>
+            document.getElementById("people2").innerHTML = "People Object #2-  " + people2.display();
+          </code>
+        </div>
+
+        <div class="result">
+          <div id="people1"></div>
+          <div id="people2"></div>
+        </div>
+        
+        <p>For people1, I added arguments for all 4 parameters, but for people2, I left the age out. Notice what happens when I use the display function for both people1 and people2. Both people1 and people2 show an age despite people2 omitting the parm. The default in the People constructor filled it in.</p>
+
+            
+            
+        
+        <h3>Object.create()</h3>
+        <p>Object.create() is another way to create multiple objects of the same type, but it doesn't involve using a constructor function. Instead, you create a prototype. The prototype is an object with properties and methods. Objects that are created using the prototype will inherit the properties and methods of the prototype. Here I have created a Book prototype. </p>
+        
+        <p>Deeper Thinking - Object.create() enables us to set one constructor prototype to another. In essence, we can extend the constructor. We are basically creating a sub-constructor from a construtor by inheriting it's properties via prototype. This links the sub-constructor to the constructor and creates a "linked-chain". Object-create() makes the prototype inheritance possible in JavaScript.</p>
+        
+        <div class="code">
+          <code>
+            const Car = {<br>
+            name: "name",<br>
+            make: "make",<br>
+            miles: 0,<br>
+            price: 30,000,<br>
+            drive() {return "Test drive a car.";},<br>
+            display() {return this.name + ", by " + this.make + " is " + this.price + " dollars.";}<br>
+           };
+          </code>
+        </div>
+        
+        <div class="result">
+          <div id="car"></div>
+        </div>
+        
+        <p>Once the Car prototype is created, I can use it to create objects of the "car" type. Declare a variable and then use the assignment operator and Object.create(Car); The name of the prototype goes inside the parenthesis. Then assign values to the properties for the new object. If you don't assign a value for one of the properties, the new object will inherit the value from the prototype.</p>
+          <div class="code">
+            <code>const econo = Object.create(Car);<br>
+              econo.name = "Civic";<br>
+              econo.make = "Honda";<br>
+              econo.miles = 5;<br><br>
+              document.getElementById("econo").innerHTML = "econo.display(): " + econo.display();
+           </code>
+        </div>
+        
+        <div class="result">
+        <div id="econo"></div>
+        </div>
+        <p>Notice that the value for price is 30000 dollars. This value is inherited from the prototype, Car. A Civic doesn't really cost $30,000.
+        Also notice, that the method display() is only in the Car prototype and not in econo.</p>
+      
+   <!-- /******** INHERITANCE PORTION *********/ -->
+      <hr style="border: 2px solid mediumturquoise;" />  
+        
+        <h2>Inheritance</h2>
+        <p>Inheritance is possible in JavaScript through prototyping. In Object.create(), I eluded to a chain like structure and you should think of that for a visual when understanding inheritance.  Javascript is a prototyping language. That means that every object inherits properties from its prototype, kind of like its parent object. Each object has a hidden property that defines where it inherits from, and then that object in turn inherits from another object, and so on until it reaches the top of the chain. The top object inherits from null. By the way, Object is the top object and to blow your mind some more...Object.create() is a method of Object.</p>
+        
+        <p> Let's look at econo. Econo inherits from Car, which inherits from Object.prototype, which inherits from null.  Arrays inherit from Array.prototype, which inherits from Object.prototype, which inherits from null.  Functions inherit from Function.prototype, which inherits from Object.prototype, which inherits from null. Can you visualize the chains? </p>
+        
+        <p>What does these chains of inheritance get us? The lower "children" inherit all the properties of the prototype chain above it and JavaScript will look through the chain until it finds what it needs starting from the lower "children" level.  That doesn't mean it contains those properties, but it can access them through pointers. You have already witnessed this in the Car prototype, where econo didn't contain a price, so JavaScript got it from it's prototype Car, as well at the display() method. Inheritance eliminates redundant code whether it is a property or a method in objects.</p><br><br>
+
+        
     </main>
       
       
     <footer>
-      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 5 May 2019 </p>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 24 May 2019 </p>
     </footer>
+  <script src="js/topic3.js"></script>
   </body>
 </html>
