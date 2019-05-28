@@ -21,13 +21,173 @@
     <main>
       <h1>Topic: Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects</h1>
         
-         
+     <!-- /******** LOCAL STORAGE PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        
+      <h2>Local Storage</h2>
+       <p>LocalStorage is a type of web storage that allows Javascript websites to store and access data right in the browser with no expiration date. This means the data stored in the browser will persist even after the browser window has been closed. HTML5 local storage is natively integrated into Web browsers, which means local storage is in there...like Prego spaghetti sauce. Local storage stores information on the user's computer in different places depending on the browser.</p>
+   
+
+      <h3>Why is local storage a good thing?</h3>  
+           
+       <p>When a user visits your website, you can store the state of their session. When the user returns to your website, that state is remembered, and reloaded. Any preferences the user has set will stay set, which is good for the user experience. Storing data in localStorage lets the user have a more customized experience without having to register and log in.</p>
+
+        
+      <h3>What to store</h3>
+       <p>Local storage can hold strings in key-value pairs. Really, local storage is just one big old JavaScript object that you can attach data to (or remove data from).  If you want to store something beyond a string, use JSON.stringify to convert it before storing. Using JSON, you can store strings, numbers, objects, arrays, etc.</p>
+           
+           <p>Use Local Storage when...</p>
+           <ul>
+               <li>It is NOT sensitive data at all </li>
+               <li>Doesn’t need to be used in an ultra high performance app</li>
+               <li>Isn’t larger than 5MB</li>
+               <li>Consists of purely string data</li>
+           </ul><br>
+             
+        
+           <p>Don't store sensitive data...</p>
+           <ul>
+               <li>User IDs or passwords</li>
+               <li>Account numbers</li>
+               <li>Session IDs</li>
+               <li>JWTs</li>
+               <li>Personal information</li>
+               <li>Credit card information</li>
+               <li>API keys</li>
+               <li>And anything else you wouldn’t want to publicly share on Facebook</li>
+          </ul>
+           
+        <p>The thing about local storage is that it is not secure! Not at all! Everyone who uses local storage to store sensitive information such as session data, user details, credit card info (even temporarily!) is at risk of cross-site scripting attacks.
+        </p>
+        
+     <!-- /******** HOW TO USE LOCAL STORAGE - PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" />         
+        
+     <h3>How to Use Local Storage</h3>
+     <p>Using Local Storage is pretty easy. To accessing and store data in local storage use the getter and setter methods for localStorage. These are the methods for localStorage.</p>
+     <p>&nbsp;&nbsp;setItem(): Add key and value to LocalStorage</p>
+     <p>&nbsp;&nbsp;getItem(): Retrieve a value by the key from LocalStorage</p>
+     <p>&nbsp;&nbsp;removeItem(): Remove an item by key from LocalStorage</p>
+     <p>&nbsp;&nbsp;clear(): Clear all LocalStorage</p>
+     <p>&nbsp;&nbsp;key(): Passed a number to retrieve nth key of a LocalStorage</p>
+        
+    <div class="code">
+          <code>
+            // set an item in local storage<br>
+            localStorage.setItem('key','value');<br>
+            <br>
+            // retrieve an item from local storage<br>
+            localStorage.getItem('key');<br>
+            <br>
+            // delete an item from local storage<br>
+            localStorage.removeItem('key');<br><br><br>
+          </code>
+     </div>    
+        
+     <fieldset>
+        <legend>Input FAVORITES into localStorage</legend>
+        
+         <input id="favColor" type="text" placeholder="Enter Favorite Color"> 
+         <input id="favFood"  type="text" placeholder="Enter Favorite Food"> 
+         <input id="favCandy" type="text" placeholder="Enter Favorite Candy"> 
+         <button type="button" onclick="doLocalStorage();">Insert Favorites</button>
+         <div id="message"></div>   
+     </fieldset>
+           
+        
+     <fieldset>
+        <legend>Inside localStorage</legend>
+        <div id="LsOutput"></div>   
+     </fieldset>
+                  
+     <button type="button" onclick="clearLocalStorage();">Clear Favorites from localStorage</button>
+        
+     <p>The Favorites example stores strings. See the code:</p>
+        
+      <div class="code">
+          <code>
+            let favColor = document.getElementById("favColor");<br>
+            let favFood  = document.getElementById("favFood");<br>
+            let favCandy = document.getElementById("favCandy");<br>
+            let message  = " ";<br>
+            let LsOutput = document.getElementById("LsOutput");<br><br>
+
+            function doLocalStorage() {<br><br>
+
+             &nbsp;&nbsp;const color = favColor.value;<br>
+             &nbsp;&nbsp;const food  = favFood.value;<br>
+             &nbsp;&nbsp;const candy = favCandy.value;<br><br>
+
+                if (color &amp;&amp; food &amp;&amp; candy) {<br>
+
+             &nbsp;&nbsp;localStorage.setItem("favHue", color);<br>
+             &nbsp;&nbsp;localStorage.setItem("favGrub", food);<br>
+             &nbsp;&nbsp;localStorage.setItem("favSweets", candy);<br>
+
+            //This reloads the page - right here!<br>
+              &nbsp;&nbsp;location.reload();<br>
+               } else {<br>
+             &nbsp;&nbsp;document.getElementById("message").innerHTML = "<b>Type in all three favorites, please."</b>;<br>
+
+               }<br>
+             &nbsp;&nbsp;console.log(localStorage);<br>   
+            };<br>
+
+            for (let i=0; i&lt;localStorage.length; ++i) { <br> 
+             &nbsp;&nbsp;const key = localStorage.key(i);<br>
+             &nbsp;&nbsp;const value = localStorage.getItem(key);<br>
+
+             &nbsp;&nbsp;LsOutput.innerHTML += key + ' ' + value + '<br>';<br> 
+            } <br>   
+          </code>
+        </div>
+        
+        
+        <p> Here are a few more types that can be stored in localStorage. (associative array and array) </p>
+        
+    <div class="code">
+          <code>
+              
+        //store an array
+        let colors = ['blue', 'orange', 'green', 'black'];<br>
+         localStorage.setItem('colors', JSON.stringify(colors));<br>
+        // get array from local storage<br>
+        const allColors = JSON.parse(localStorage.getItem('colors'));<br><br>
+
+        // save associative array to local storage<br><br>
+        let cars = {car: "Civic", minivan: "Odyssey", Truck: "Ford 150"};<br>
+        localStorage.setItem('cars', JSON.stringify(cars));<br>
+        const car = JSON.parse(localStorage.getItem('cars'));<br>
+
+        let message2 = "";<br><br>
+
+         for (let j=0; j&lt;localStorage.length; ++j) { <br>
+            const key = localStorage.key(j);<br>
+            const value = localStorage.getItem(key);<br><br>
+
+            message2 += key + ' ' + value + '<br>'; 
+          }<br>   
+    
+       document.getElementById('message2').innerHTML = "Colors and Cars " + message2  + "<br>";        
+                     
+          </code>
+     </div>    
+        
+        <button type="button" onclick="moreLocalStorage();">See more types in localStorage</button>
+        <div id="message2"></div>
+        
+     <!-- /******** SESSION STORAGE PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        
+      <h3>Session Storage</h3>
+       <p>There is also, sessionStorage in HTML5 which works exactly the same as local storage except that all data it stores is automatically deleted when the user closes their browser tab.</p>
       
     </main>
       
       
     <footer>
-      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 5 May 2019 </p>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 28 May 2019 </p>
     </footer>
+    <script src="js/topic6.js"></script>
   </body>
 </html>
