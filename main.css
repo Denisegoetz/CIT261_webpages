@@ -203,4 +203,32 @@ canvas{
     background: lightblue;
 }
     
+/******** Topic 7 ********/
 
+img {
+    margin: 0px 180px auto; 
+    
+}
+
+.container {
+    background-color: lightcyan; 
+    max-width: 500px;
+    margin: 20px auto; 
+    padding: 0px 0px 10px;
+}
+
+#sub-main-header {
+    padding: 15px 0px 0px;
+    
+}
+
+#radioCntl {
+   padding: 0px 20px 0px;   
+}
+
+#sub-main {
+/* top, right, bottom, left)  */    
+    margin: 0px 70px auto;
+    padding: 0 15px;
+
+}

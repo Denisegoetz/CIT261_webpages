@@ -21,13 +21,187 @@
     <main>
       <h1>Topic: DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc.</h1>
         
-         
+<!-- /******** DOM MANIPULATION PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        
+      <h2>DOM Manipulation</h2>
+        <p></p>
+        <h3>What is the DOM</h3>
+        <p>The DOM or Document Object Model is a model of the webpage that is loaded into the browser. Each of the elements on the page is an object in the DOM.  The top level element of the dom is the document or the html element. Everything inside the html tags is a part of the document. The head and body are also objects and are children of the html. This pattern continues down through the rest of the document. </p>
+        
+        <img src="picture_DOM.png" alt="DOM Chart" style="width:500px;height:400px;">
+        
+<!-- /******** TRAVERSING THE DOM PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" />         
+        <h2>Traversing the DOM</h2>
+        
+        <p>The DOM has a hierarchical structure. There are root nodes, parent nodes, children nodes, and sibling nodes.  It's important to understand how to get at the HTML elements that you are aiming for. Learning how to navigate up and down the DOM tree and move from branch to branch is essential to understanding how to work with JavaScript and HTML. </p>
+        
+        <p>What helped me the most was using the console.log() to examine the HTML elements. You can look at the elements of the document structure in the console and see their relationship. Once you determine where the element is and if it is a parent, child or whatever, then you can choose which selector you would like to use. Here are some console.log commands I found to see the structure of my document better. If you "inspect" using chrome tools, as you hover over the structure in the console, it will highlight the element on the page.</p>
+        
+        <div class="code">
+          <code>
+             console.dir(document);<br>
+             console.log(document.head);<br>
+             console.log(document.body);<br>
+             console.log(document.title);<br>  
+             console.log(document.all);<br><br>
+             //Then test out if you are selecting the thing you actually want.   
+             console.log(document.getElementById('header-title'));<br>  
+          </code>
+        </div>
+        <br>
+        
+<!-- /******** SELECTING ELEMENTS in the DOM  PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        
+        <h2>Selecting Elements</h2>
+        <p >To change an element in the DOM, first it needs to be selected. There are several ways to select elements including getElementById(), getElementsByTagName(), getElementsByClassName(), querySelector(), querySelectorAll(), and .collection.</p>
+        
+        <h3>.getElementsById()</h3>
+        <p>.getElementById() is the simplest way to select an element. To use this method, the element to be selected needs to have an id. Then that id can be inserted between the parenthesis to return that item.</p>
+        
+        <h3>.getElementsByClassName()</h3>
+        <p>.getElementsByClassName() will select all elements that have the specified class name and return an HTMLCollection. To use this method, the element you want to select needs to have that class name.</p>
+
+        <h3>.getElementsByTagName()</h3>
+        <p>.getElementsByTagName() will return an HTMLCollection of all the tags of that type. An HTMLCollection is similar to an array, in that you select an element with an index number, use a for loop, and use the length property to find out how many elements it has. However you can't use methods like pop(), push(), or join() on it. To use getElementsByTagName(), add a tag in the parenthesis. Then select the element from the HTMLCollection.</p>
+        
+        <h3>.querySelector and .querySelectorAll()</h3>
+        <p>.querySelector will select just one element. On the other hand, .querySelectorAll() will select all of the elements with the specified id, class, type, attribute, attribute value, etc, and return the results in a NodeList.  A node list is similar to an HTMLCollection, except it is a list of nodes instead of a list of elements. The desired element can then be selected with an index number. This is the most versitile option for selecting elements from the DOM.</p>
+   
+        <h3>HTML Object Collection</h3>
+        <p>This method directly selects the type of element that is stated and returns them to in an HTMLCollection. Or if there is only one, such as the head, body, title, etc, you can directly manipulate it.</p>
+
+        <div class="code">
+          <code>
+            // select the body<br>
+            document.body.classList.style.backgroundColor = 'yellow';
+          </code>
+        </div>
+        
+ <!-- /******** MANIPULATING HTML ELEMENTS in the DOM PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" />        
+        <h2>Manipulating HTML Elements</h2>
+        <p>Each element in the DOM is an object and has properties and methods. Using a scripting language such as JavaScript, the these elements can be manipulated. Elements can be added or removed, and their contents and attributes can be added and changed. </p>
+        
+        <h3>Add New Element to Dom</h3>
+        <p>Adding a new element to the DOM takes place in several steps. First create a new element, then create a text node. Append the text node to the element, then append the element to a parent element in the DOM. </p>
+        
+        <h3>createElement()</h3>
+        <p>Use createElement to create a new element and add content to it. The (List of Items) example below, uses the createElement when a item is added to the list. </p>
+        
+        <div class="code">
+          <code>
+              
+            //create a new li for the new item user wants to add to a list.<br>
+            let li = document.createElement('li');<br><br>
+            //add a classname to it<br>
+            li.classname = 'list-group-item';<br><br>
+            //add text node with input value<br>
+            li.appendChild(document.createTextNode(newItem));<br><br>
+
+            itemList.appendChild(li); 
+              
+          </code>
+        </div>
+        
+
+        <h3>appendChild()</h3>
+        <p>Now use appendChild to add the new element to a parent element in the DOM. See the results below the insertBefore() section. The (List of Items) example below, uses the appendChild when a item is added to the list. See code block above.</p>
+        
+        
+        <h3>insertBefore()</h3>
+        <p>As an alternate to using appendChild, insertBefore can be used to insert a new element before an existing element.  In order to do this, you need to know identify the parent div, and then insert it before a child of the div.
+            
+        <p>The (List of Items) example below, uses the insertBefore() to insert the delete item button that only shows up after a user enters a new item. The delete button appears before the heading for the Travel Packing List or Grocery List, depending on which list you are on.</p>
+        
+       <div class="code">
+          <code>
+
+            // Create a delete button to appear once a user has decided to add items to a list.<br>
+            let deleteBtn = document.createElement('button');<br><br>
+
+            //add a classname<br>
+            deleteBtn.classname = 'btn btn-dark float-right';<br><br>
+
+            //append text node<br>
+            deleteBtn.appendChild(document.createTextNode('delete new item'));<br><br>
+
+            //add an Id to it<br>
+            deleteBtn.id = 'deleteBtn';<br><br>
+
+            //get the position of where to place it. TRAVERSING THE DOM<br>
+            let divCont = document.querySelector('#sub-main');<br>
+            //console.log(divCont);<br><br>
+
+            //insert into the DOM before the h2 Items heading.<br>
+            divCont.insertBefore( deleteBtn, divCont.children[2]);  
+          </code>
+        </div>
+        
+         <h3>Remove Element From Dom</h3>
+        <p>To remove an element from the DOM, you need to be able to identify the element to be removed as well as its parent element.</p>
+        <h3>removeChild()</h3>
+        <p>Remove child can be used to remove an element from the DOM. In order to remove an element, first identify the parent element of the element to be removed. Then identify the child element to be removed. In the (List of Items) example below, I use removeChild() to delete items that the user put on the list, that is... if they click the delete item button.</p>
+        
+        <div class="code">
+          <code>
+             function removeItem(e){<br>
+             &nbsp;if (itemList.childElementCount >= 5 ) {<br>
+         &nbsp;&nbsp;itemList.removeChild(itemList.lastElementChild);<br>
+         &nbsp;&nbsp;}<br>
+            &nbsp;}
+          </code>
+        </div>
+        
+<!-- /********  LIST OF ITEMS DEMO  PORTION *********/ -->         
+      <hr style="border: 2px solid mediumturquoise;" />        
+        
+    <div class="container">
+        <header id="sub-main-header" class="bg-success text-white p-4 mb-3">
+          <h1 id="sub-header-title">List of Items <span style="display:none">123</span></h1>
+        </header>
+        
+        <div class="container">
+            
+            <div id="radioCntl" class="control">
+               <label class="radio">
+                  <input id="rbutton1" type="radio" name="lists" checked>
+                  Travel
+               </label>
+               <label class="radio">
+                  <input id="rbutton2" type="radio" name="lists">
+                  Grocery
+               </label>
+                <button onclick="radioBtn()" id="submit">Click to see changes to lists</button>
+            </div>
+            
       
+            <div id="sub-main" class="card card-body">
+              <h2 class="title">Add Items</h2>
+                <form id="addForm" class="form-inline mb-3">
+                  <input id="newItem" type="text" class="form-control mr-2">
+                  <input type="submit" class="btn btn-dark" value="Submit">
+                </form>
+              <h2 class="title">Items</h2>
+                <ul id="items" class="list-group">
+                  <li class="list-group-item">Toiletries</li>
+                  <li class="list-group-item">Shorts</li>
+                  <li class="list-group-item">Tee shirts</li>
+                  <li class="list-group-item">Flip Flops</li>
+                </ul>
+            </div>
+        </div>
+     </div>
+        
+        
     </main>
       
       
     <footer>
-      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 5 May 2019 </p>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 30 May 2019 </p>
     </footer>
+    <script src="js/topic7.js"></script>  
   </body>
 </html>
