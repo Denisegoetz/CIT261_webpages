@@ -21,13 +21,91 @@
     <main>
       <h1>Topic: Manipulating CSS Class Properties Using JavaScript</h1>
         
-         
+<!-- /******** MANIPULATIng CSS Class Properties PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />         
       
+    <h2>Manipulating CSS Class Properties</h2>
+      <p>In the previous topics, DOM Manipulation, we learned how to manipulate the HTML of a page, but it is also possible to manipulate the CSS of the page. Style properties can be changed by changing the style attribute inside the element in the HTML, and this will override any setting in the CSS style sheet.   Throughout the next section there are examples of adding and changing CSS attributes. </p>
+      <p>The syntax for for changing a CSS style is shown below. Notice that the style property is written in camelCase rather than hyphenated. Where a CSS style property would normally have a hypen, for example, font-size:, it would be fontSize instead.</p>
+        <div class="code">
+          <code>element.style.styleProperty = "value";
+
+          </code>
+        </div>
+      <p>This works, but it is not the best solution. It adds an inline CSS style to the page instead of keeping the CSS separate from the HTML. A better approach is to add a class name to the element that refers to a styling rule in the CSS document for the page.</p>
+      <div class="code">
+          <code>element.classList.add('className');
+
+          </code>
+        </div>
+        
+<!-- /******** Examples of Manipulation Class Properties PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />         
+        
+      <h3>Altering one Element and one CSS property</h3>
+      <div class="code">
+          <code>
+            //Change one property with style rather than <br>
+            //using cssText and taking a chance with a typing error - high probability<br>
+            document.querySelector("h3").style.color = "green";
+          </code>
+      </div> 
+        <button type="button"  onclick="h3ColorChange();">Change one Element</button><br> 
+        
+        
+      <h4>Altering one Element and multiple CSS properties</h4>
+      <div class="code">
+          <code>
+            //You write a string of CSS as if in the style sheet itself<br><br>
+            document.querySelector("h4").style.cssText = "color: blue; font-size: 35px;";
+          </code>
+      </div>
+         <button type="button"  onclick="h4MultiChange();">Change Multiple Properties on Element</button><br><br>  
+      
+        
+        
+      <h4>Altering many Elements with varing CSS Styles</h4><br>    
+      <h4 class="title">Travel Items List</h4>
+          <ul id="items" class="list-group">
+              <li class="list-group-item">Toiletries</li>
+              <li class="list-group-item">Shorts</li>
+              <li class="list-group-item">Tee shirts</li>
+              <li class="list-group-item">Flip Flops</li>
+          </ul>
+      <button type="button" onclick="liMultiChange()">Click to change the list</button><br><br>      
+        
+        
+        
+      <p><b>Hover over the photo.</b></p>    
+        
+      <img src="IMG_2535.jpeg" alt="Teenager holding dog" class="img-one" style="width:500px;height:400px;"> <br><br>
+      
+        
+        
+      <p><b>How are you feeling today?</b></p>    
+        
+       <select id="emotion" style="margin-left: 280px" >
+          <option value="default">Select an Emotion...</option> 
+          <option value="Happy">Happy</option>
+          <option value="Sad">Sad</option>
+          <option value="Angry">Angry</option>
+          <option value="Scared">Scared</option>
+       </select>
+        
+       <button type="button" style="margin-left: 10px" onclick="emojiAppear();">Click to enter your emotion</button> 
+       <div id="emoji"> </div> <br>
+        
+
+        
+
+        
+        
     </main>
       
       
     <footer>
-      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 5 May 2019 </p>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 1 June 2019 </p>
     </footer>
+    <script src="js/topic8.js"></script>  
   </body>
 </html>
