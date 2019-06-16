@@ -21,13 +21,168 @@
     <main>
       <h1>Topic: Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript</h1>
         
-         
+<!-- /******** CSS Transitions PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />
+        
+      <h2>CSS Transitions</h2>    
+      <p>Without transitions, changes to CSS take effect immediately, which can be a jarring user experience. Transitions allow you to make those changes gradually, slowly changing until it's final state. CSS properties can be changed to make a website more understandable or interactive. For example, when a button is hovered over, a change of background color will indicate that it is clickable.</p>
+
+      <div class='parent'>
+          <div class='box1 inline-block'>Hover - No Transition</div>
+          <div class='box2 inline-block'>Hover - With Transition</div>
+      </div>
+
       
+      <p>Notice how adding a transition will make the change gradual. Add the transition to the CSS styling rules for the element. You need to specify the property to transition, and the duration.  You can transition multiple properties by using a comma separated list. Transition is actually shorthand for transition-property, transition-duration, transition-timing-function, and transition-delay. </p>
+        <div class="code">
+          <code>
+            transition: width 2s, transform 2s, background-color: 1s 2s, border-radius 3s ease-in; 
+          </code>
+        </div>
+
+      <p>Additional values that can be added are a transition timing function, and a transition-delay.</p> 
+        <ul><li>A transition timing function specifies how the transition will run. For instance, ease-in will start out slow and then speed up, while ease-out will start fast and slow toward the end.</li>
+          <li>Timing delay specifies how many seconds to wait before the transition starts.</li></ul>
+        
+       <h3>Properties you can Transition</h3>
+       <p>You can only transition properties that have an identifiable halfway point, for example </p>
+        
+       <ul> 
+          <li>background-color, background-position </li>
+          <li>border-color, border-width, border-spacing  </li>
+          <li>bottom </li>
+          <li>color</li>
+          <li>font-size, font-weight</li>
+          <li>height left </li>
+          <li>letter-spacing </li>
+          <li>line-height </li>
+          <li>margin </li>
+          <li>max-height, max-width </li>
+          <li>min-height, min-width </li>
+          <li>opacity </li>
+          <li>outline-color, outline-offset, outline-width </li>
+          <li>padding right </li>
+          <li>text-indent, text-shadow  </li>
+          <li>top </li>
+          <li>vertical-align </li>
+          <li>visibility </li>
+          <li>width </li>
+          <li>word-spacing </li>
+          <li>z-index</li>
+       </ul>
+        
+  <!-- /******** CSS Animations PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />      
+    
+      <h2>CSS Animations</h2>
+        <p>CSS animations are a step up from transitions because they are more complex but they control a changes in CSS properties as well. They use @keyframes, or timing functions, to control the change over the duration of the change. To create an animation, first write the keyframe, and then call it with the animation property.</p>
+        
+<!-- /** I downloaded this photos for FREE from  https://pixabay.com  ****/ -->  
+       <div id="slider">
+         <figure>
+           <img src="sunset-1_1280.jpg">
+           <img src="nature-2_1280.jpg">
+           <img src="nature_1280.jpg">
+           <img src="banner_1280.jpg">
+           <img src="sunset-1_1280.jpg">
+         </figure>  
+       </div>
+        
+        <p>To write a @keyframe, first use the keyword @keyframes and give it a name. Then, inside curly braces, create a list of percentages where things will happen in the animation. For instance, 0% is the start of the transition, 50% is halfway through the animation, and 100% is the end of the animation. Then after each percentage, inside curly braces, write the css styling rules that you want to take effect. </p>
+        <p>Next, in the styling rules for the element, add an animation property. The animation property requires 2 values, the @keyframe name and the duration of the animation in seconds. </p>
+        <p>This code is what I used for the image slider you see.</p>
+        
+        <div class="code">
+          <code>
+            /* This one goes forward thru the images then backward */<br>  
+            @keyframes slider {<br>
+            &nbsp;&nbsp;0% {left: 0;}<br>
+            &nbsp;&nbsp;10% {left: 0;} <br>
+            &nbsp;&nbsp;12% {left: -100%;}<br>
+            &nbsp;&nbsp;22% {left: -100%;}<br>
+            &nbsp;&nbsp;24% {left: -200%;}<br>  
+            &nbsp;&nbsp;34% {left: -200%;}<br>            
+            &nbsp;&nbsp;36% {left: -300%;}<br>               
+            &nbsp;&nbsp;46% {left: -300%;}<br>                
+            &nbsp;&nbsp;48% {left: -400%;}<br>      
+            &nbsp;&nbsp;58% {left: -400%;}<br> 
+            &nbsp;&nbsp;60% {left: -300%;}<br> 
+            &nbsp;&nbsp;70% {left: -300%;}<br> 
+            &nbsp;&nbsp;72% {left: -200%;}<br> 
+            &nbsp;&nbsp;82% {left: -200%;}<br> 
+            &nbsp;&nbsp;84% {left: -100%;}<br> 
+            &nbsp;&nbsp;94% {left: -100%;} <br>          
+            &nbsp;&nbsp;96% {left: 0%;}<br> 
+           }<br><br> 
+              
+            #slider figure{<br> 
+             &nbsp;&nbsp; position: relative;<br> 
+             &nbsp;&nbsp; width: 500%;<br> 
+             &nbsp;&nbsp; margin: 0;<br> 
+             &nbsp;&nbsp; left: 0;<br> 
+             &nbsp;&nbsp;text-align: left;<br> 
+             &nbsp;&nbsp;font-size: 0;<br> 
+             &nbsp;&nbsp;animation: 20s slider infinite;<br>   
+            }
+          </code>
+        </div>
+        
+    <div class=hideText>    
+    <p>Additional values that can be added are animation-timing-function and animation delay (same as on transitions), animation-direction,   animation-iteration-count, animation-fill-mode, and animation-play-state.</p>
+        <ul><li>animation-direction can be set to normal, reverse, alternate, etc. and determines what direction the keyframe will run, 0% to 100% or 100% to 0%.</li>
+          <li>animation-iteration-count tells how many times to repeat the animation. from one to infinite.</li>
+          <li>animation-fill-mode will set whether the animation will determine the appearance of the element before and after the animation. The default is none, which will revert back to the original appearance once the animation is done. If you want it to retain the changes, set it to forwards.</li>
+          <li>animation-play-state will determine if the animation is running or paused.</li></ul>
+    </div>
+        
+        
+<!-- /******** Triggering with JavaScript PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        
+      <h3>Triggering with JavaScript</h3>
+        
+      <p>CSS Transitions and animations can be applied on pseudo classes (defines a special state of an element) like hover or active. Animations can be set to play all the time or a certain number of times after the page loads, but if you want to have more control over when a transition or animation happens, JavaScript is needed. Notice the text above appear and disapear when you scroll up and down the page.</p>
+      <p>With JavaScript, transitions and animations can be set to play or pause in response to an event that happens on the page.  For example, on the click of a button or scrolling down the page.</p>
+        
+    
+      <h3>scroll</h3>
+        <p>To make a transition or animation play when the user scrolls down the page, use scroll. In this case, the listener will call the scrollAppear() function when a user scrolls on the screen. </p>
+        <h4>Transition triggered by scroll</h4>
+        <div class="code">
+          <code>
+            window.addEventListener('scroll', scrollAppear);<br>
+
+            function scrollAppear(){<br>
+            let hideText = document.querySelector('.hideText');<br>
+            let textPositiion = hideText.getBoundingClientRect().top;<br>
+            //get screensize and divide by 2 so the text come up half way (in the middle of the screen)<br>
+            let screenPosition = window.innerHeight / 2;<br><br>
+    
+          if (textPositiion &lt; screenPosition){<br>
+        
+         &nbsp;&nbsp;hideText.classList.add('showText'); <br>
+          }else{<br>
+         &nbsp;&nbsp;hideText.classList.remove('showText');<br>
+         &nbsp;&nbsp;}<br>
+        } <br> 
+
+          </code>
+        </div>
+    
+
+      <h4>Animation triggered by Javascript</h4>
+      <p>An animation triggered by a scroll or onclick event can be a little more flashy, but the concept is the same. Add an event listener to JavaScript. Add a @keyframes rule and an animation property to a class in CSS. Create a function that adds and removes classes when the element is clicked.</p><br>
+        
+    
+      <button id="btn" type="button" onclick="slideIn();">Click Here</button>     
+      <div id="slideEmoji"></div>    
+
     </main>
       
       
     <footer>
-      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 5 May 2019 </p>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 7 June 2019 </p>
     </footer>
+    <script src="js/topic9.js"></script>  
   </body>
 </html>
