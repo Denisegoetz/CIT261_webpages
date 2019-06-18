@@ -20,14 +20,216 @@
       
     <main>
       <h1>Topic: Standard JavaScript Events Including those for Mobile Devices</h1>
+ 
+<!-- /******** JavaScript Events PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />
         
+      <h2>JavaScript Events</h2>
+      <p>Events occur when some sort of interaction takes place in a web page. This can be the end user clicking on something, moving the mouse over a certain element or pressing down certain keys on the keyboard. An event can also be something that happens in the web browser, such as the web page completing the loading of a page, or the user scrolling or resizing the window.</p> <p>JavaScript Events make it possible for a user to interact with a webpage. Event listeners watch for certain actions to occur, such as a click, touch, mouse movement, etc., and when that event occurs, the listener calls a function that responds to the action.</p>
+
+
+<!-- /******** Adding Events PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        
+      <h3>Adding Event Handlers</h3>
+      <p>It's necessary to get JavaScript listening for the event to fire in the DOM to trigger a relevant function in response. There are two ways to add events, as an attribute of an element in the HTML, or with an addEventListener function in the Javascript. </p>
+
+      <p>When adding an attribute to the HTML, put 'on' in front of the event type (onclick, onmouseover, onmouseout, onkeydown) and put the function call inside the quotation marks. This is a simple way to add an event listener, but the drawback is you can only add one per element. This technique has been used throughout all the topic pages written. </p>
+        
+      <div class="code">
+        <code>
+        // attribute of HTML tag<br>
+         &lt;div onclick='functionName()' &gt;Click me&lt;/div&gt;<br>
+         &lt;button onclick="demoForLoop();"&gt;Try it&lt;/button&gt;    
+        </code>
+      </div>  
+        
+       <p>When adding a function to the javascript file, you will need to get the element first using getElementById() or similar method. Alternatately, you can omit the element name if you want the event listener to be attached to the whole page, meaning it will fire any time that event happens anywhere on the page.</p>
+       <p>Add the addEventListener() function, and inside the parenthesis, list the event type in quotes, and the function name. Notice there are no parenthesis after the function name.  The benefit to adding an event listener this way is that you can add multiple event listeners to the same element, for instance to deal with both touch and mouse events.</p>
+        
+        <div class="code"> 
+          <code>
+            // javascript function<br>
+            elementName.addEventListener('click', functionName);<br><br>
+            &nbsp;&nbsp;function functionName() { elementName.innerHTML ='You clicked on me';}
+          </code>
+        </div>
+        
+       <p>Another option would be to replace the function name with an anonymous function.  The drawback of an anonymous function is that you can't remove the event listener or call it from another place.</p>
+        <div class="code"> 
+          <code>
+            elementName.addEventListener('click', function() {<br> 
+            &nbsp;&nbsp;elementName.innerHTML ='You clicked on me';<br>
+            });
+          </code>
+        </div>
+        
+<!-- /******** Possible Events PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        
+         <h3>Possible Event Categories</h3>
+         <p>There are many possible events that can happen with the user interface. To categorize them we have:</p>
+         <ul><li>Load</li>
+             <li>Mouse</li>
+             <li>Form</li>
+             <li>Keyboard</li>
+             <li>Touch</li>
+             <li>Animation and Transition</li>
+        </ul>
+        
+<!-- /******** Load Event PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+    
+      <h3>Document Events - load</h3>
+      <p>When the HTML is loaded and processed, the DOM is fully built and JavaScript detects this via an event. The event 'load', fires when the webpage is fully loaded.</p>
+        
+<!-- /******** FORM Event PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+       <h2>Form Events</h2>
+       <p>Form events are triggered by actions inside a HTML form. I have used a Form event on my DOM Manupulation topic. There are more events than submit and focus. </p>
+        
+       <h3>submit</h3>       
+        <p>Fires when the user submits a form.</p>
+        
+       <h3>focus</h3>   
+       <p>Occurs when the focus on an element in the form. An element receives a focus when the user either clicks on it or uses the Tab key on the keyboard. </p>
+        
+<!-- /******** Mouse Event PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        
+      <h2>Mouse Events</h2>
+        <h3>click</h3>
+        <p>Click is an often used and versitile event listener. The event is fired when a mouse is clicked, the enter button is pushed, or on a touch screen, if the screen is touched. Click is often used with a button, but it can be used with any element, including the whole page. </p>
+        
+        <div id="clickEmoji" >🤓</div> <br>
+        <div id="clicked" >Click on me! </div> <br>
+
+        
+        <h3>dblclick</h3>
+        <p>The doubleclick event fires when the mouse is double-clicked. It isn't a good idea to use a click and a double-click on the same element, because the click event will fire along with the double-click. Here is an example that uses a dblclick event listener. Note: on a mobile device, the double click zooms in the screen.</p>
+        
+        <div id="dClickEmoji" >😃</div> <br>
+        <div id="stopclicking" >Double click on me! </div> <br>
+
+<!-- /******** Mouse DOWN/UP Event PORTION *********/ -->    
+      <hr style="border: 1px solid mediumturquoise;" /> 
+        <h3>mousedown and mouseup</h3>
+        <p>When the user clicks the mouse. It causes 3 events, mousedown, then mouseup, then click.</p>
+        <h3>mousedown</h3>
+        <p>Mousedown fires when the mouse button is depressed. It happens before the click event. This mousedown event changes the source of the image.</p>
+        
+        <h3>mouseup</h3>
+        <p>Mouseup fires when the mouse button is released. It also happens before the click event. This mouseup event changes the source of the image back to the original.</p>
+    
+        <img src='groceries.jpg' class='food' id='food' width=230px>
+        
+<!-- /******** Mouse OVER/OUT Event PORTION *********/ -->    
+      <hr style="border: 1px solid mediumturquoise;" /> 
+
+        <h3>mouseover and mouseout </h3>
+  
+        <h3>mouseover</h3>
+        <p>The mouseover event happens when the mouse pointer passes over the element. This mouseover event changes the source the image to another file.</p>
+        
+        <h3>mouseout</h3>
+        <p>The mouseout event when the pointer moves away from the element. This mouseout event replaces the image source with the orginal.</p>
+        
+        <a href='http://www.pinterest.com'><img src='pinterest-square-brands.svg'   class="pin" id='pin' width=100px onmouseover="this.src='apple-brands.svg'" onmouseout="this.src='pinterest-square-brands.svg'"></a>
+        
+<!-- /******** KEYBOARD Event PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+   
+        <h2>Keyboard Events</h2>
+        
+        <h2><b>TRY IT! &nbsp; Begin typing the letters of the alphabet. (a,b,c) </b></h2>
+        <img src="keyboard-1409743_1280.png" width=80/>
+        
+        <h3>click</h3>
+        <p>Click events can be triggered by the <b>enter key</b> on the keyboard. This only works with buttons, inputs, or anchor tags. To make use the enter key, the focus must be on the element to be clicked. </p>
+        
+ <!-- /******** Keyboard Events PORTION *********/ -->    
+      <hr style="border: 1px solid mediumturquoise;" /> 
+        
+        <h3>keydown, keypress, keyup</h3>
+        <p>When the user clicks a key on the keyboard, it causes 3 events, first keydown, then keypress, and finally when the key is released, keyup.</p>
+        
+        <div id="enterKeys"></div>    
+        
+        <h3>keydown</h3>
+        <p>When a user presses a key, the keydown event happens. If the key is held down, the event happens repeatedly until the key is released.</p>
+        
+        <h3>keypress</h3>
+        <p>The keypress event happens when the user presses a key, after keydown, but before keyup. Keypress only works for character keys, enter, and delete. It doesn't work on keys like tab or control.</p>
+        
+        <h3>keyup</h3>
+        <p>The keyup happens when the key is released. </p>
+        
+<!-- /******** Touch Event PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        <h2>Touch Events</h2>
+        <p>Some events are triggered by touch when using a touch screen. Since many devices don't have touch screens, it is smart to add events that can be triggered with the mouse or keyboard in addition to any touch events.</p>
+        
+        <h3>click</h3>
+        <p>Click events work for touch as well as mouse and keyboard. With touch, the click event is delayed 300ms, which allows the user to do other things, such as zoom or scoll before the click event takes place. </p>
          
-      
+        <h3>touchstart</h3>
+        <p>The touchstart event happens when the user touches the screen inside an element, creating a touchpoint.</p>
+        
+        <h3>touchmove</h3>
+        <p>The touchmove event happens when the user moves the touchpoint across the screen.</p>
+        
+        <h3>touchend</h3>
+        <p>The touchend event happens when the user removes the touchpoint from the screen.</p>
+        
+        
+<!-- /******** EXAMPLE Touch Event PORTION *********/ -->    
+      <hr style="border: 1px solid mediumturquoise;" /> <br><br>    
+        
+        <div class='box3 inline-block' id="box3">Touch Inside the Box going from one side to the other.</div>
+        
+        
+        <h3>touchenter</h3>
+        <p>The touchenter event happens when the user is moving a finger across the screen and moves over an element.</p>
+        
+        <h3>touchleave</h3>
+        <p>The touchleave event happens when the user continues moving across the screen and moves away from the element.</p>
+
+        <h3>touchcancel</h3>
+        <p>The touchcancel event occurs when the touch is interrupted. This can happen if the finger exits the window of the webpage or if too many fingers touch the screen.</p>
+
+<!-- /******** Animation and Transition Event PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        
+        <h2>Animation and Transition Events</h2>
+        
+        <p>There are several events that can be used with animations and transitions. They include animationstart, animationiteration, animationend, and transitionend.</p>
+        
+        <p>The first example is coded with CSS only but you get the effect of zooming in and out on a mouseover. The second "growing" example is coded with JavaScript using setInterval, clearInterval and changing width on the mouseover/out. I have discovered that with the transitions and animations there is more than one way to get simular effects.</p>
+        <div class="frameContainer"> 
+            <div class="frame">
+            </div> 
+        </div>
+        <br>
+        <br>
+        <img onmouseover="increase()" onmouseout="decrease()" id="img1" src="nature-2_1280.jpg" width=100/>
+        
+        <h3>animationstart</h3>
+        <p>The animationstart event happens when an animation starts to play for the first time. </p>
+        
+        <h3>animationiteration</h3>
+        <p>The animation iteration event happens when the animation starts to play every time except for the first time.</p>
+        
+        <h3>animationend</h3>
+        <p>The animationend event happens when the last iteration of the animation completes.</p>
+        
+
+         
     </main>
       
       
     <footer>
-      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 5 May 2019 </p>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 8 May 2019 </p>
     </footer>
+   <script src="js/topic10.js"></script>        
   </body>
 </html>

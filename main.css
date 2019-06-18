@@ -390,6 +390,14 @@ img {
 }
 
 /**************** Topic 10 ***************/
+#clickEmoji {
+  font-size: 100px;
+    
+}
+#dClickEmoji {
+  font-size: 100px;
+    
+}
 
 .box3{
    background: white;
@@ -408,6 +416,12 @@ img {
         left: 0;
 		margin-left: 0px;
 	}
+    
+    .food {
+        padding: 0;
+        left: 0;
+		margin-left: 0px;
+    }
 }
 
 @media only screen 
@@ -417,6 +431,10 @@ img {
 	.box3 {
 		margin-left: 5px;
 	}
+    .food {
+		margin-left: 5px;
+	}
+    
 }
 /******************************************************/
 /*  ZOOM in and OUT effect with CSS only.  Very Cool. */
