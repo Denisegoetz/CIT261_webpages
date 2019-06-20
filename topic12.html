@@ -20,14 +20,177 @@
       
     <main>
       <h1>Topic: Designing, Defining, and Triggering CSS3 Transforms without Custom Libraries</h1>
+<!-- /******** Transforms PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />
         
-         
+        <h2 >CSS3 Transitions Thought Library</h2>
+        <p>Transforming an object can include any of the following: scale(), translate(), rotate(), skew(), and matrix(). The appearance of the element changes before the users eyes, hence the word "transforms". The tranforms can be triggered with JavaScript, a pseudo classes or with an animation. </p>
+        
+        <p>Transform can be done in 3 different directions, x, y, and z. X transforms manipulate the element along the x-axis or a horizontal line in the center of the element. Y transforms manipulate along the y-axis or a vertical line. Z transforms along the z-axis, or a line going from the screen to the user. The z-axis creates 3d effects which can only be seen if you add a couple of attributes.</p>
+        
+        <p>I chose to do these button examples because I was trying to do things that I would actually put on a webpage.</p>
+        
+        <button class="btn">Change Color</button>
+        <button class="but">Darken Color</button>
+     
+        <div>
+           <button class="but2">Transform it</button>
+        </div>
+        <br>
+        <br> 
+        <br> 
+
+<!-- /******** Flip Cards PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />
+        <h3>Flash Cards</h3>
+        <p>These flashcards use transform: rotateX() to flip the cards vertically. The flip is triggered by mouseover and mouseout events.</p>
+        <h4>Transformation Flashcards</h4>
+        <p>Move your mouse over the card to see the answer.</p>
+
+      <div class="flip-box"> 
+        <div class="flip-box1">
+           <div class="flip-box-inner">
+              <div class="flip-box-front">
+                  <h2>How long does it take to be a good Frontend Devloper?</h2>
+              </div>
+              <div class="flip-box-back">
+                  <h2>Anything is possible with YouTube and Google.</h2>
+              </div>
+            </div>
+        </div>
+        <div class="flip-box2">
+            <div class="flip-box-inner">
+              <div class="flip-box-front">
+                  <h2>Why does CSS aways seem to fight back?</h2>
+              </div>
+              <div class="flip-box-back">
+                  <h2>Because CSS stands for Cascading Sassy Sheets.</h2>
+              </div>
+            </div>
+        </div>
+    </div>    
+        <br>
+        
+<!-- /******** Translate Boxes PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />        
+        <h2>Translate Elements</h2>
+        <p>Translate moves things from it's current position to another one. There are several different ways to use translate including translate(5px), translate(5px, 40px), translateX(-30px), translateY(50px), translateZ(20px), and translate3d(5px, 4px, 3px). Negative numbers move the opposite way, on x it moves to the right, and on y it moves up.</p>
+        
+        <div class="transBox t1" id="transBox1" onclick="trans1()">translate</div>
+        <br>
+        <div class="transBox t2" id="transBox2" onclick="trans2()">translate Y</div>
+        
+<!-- /******** Transforms PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        <h2>Rotating Elements</h2>
+        <p>Rotate turns the object to the specified degrees. Actually there are several options for rotate. The measurements can be written in degrees (deg), radians (rad), percentages (50%) or fraction of a turn (0.3turn). Negative numbers rotate the opposite direction. </p>
+      
+        <p>Transforming these photos with rotate makes the site more interesting. I could have used skew but that would have distorted the pictures. As you hover over the photos, they rotate and the opacity is dimmed. This could be a neat gallery of moments on a webpage.</p>
+        
+        <h2>Time is limited for all of us...</h2>
+        <div class="row">
+            <div class="container1">
+                <img src="Elsa-1-year-birthday-party.jpeg" style="max-width:100%;cursor:pointer"
+	               onclick="onClick(this)" class="modal-hover-opacity">
+                <div class="rowText">Birthday</div>
+            </div>
+            <div class="container1">
+                <img src="Elsa-1-year-birthday-party.jpeg" style="max-width:100%;cursor:pointer" 
+                     onclick="onClick(this)" class="modal-hover-opacity">
+                <div class="rowText">Vacation</div>
+            </div>
+            <div class="container1">
+                <img src="Elsa-1-year-birthday-party.jpeg" style="max-width:100%;cursor:pointer" 
+                     onclick="onClick(this)" class="modal-hover-opacity">
+                <div class="rowText">Holiday</div>
+            </div>
+            <div class="container1">
+                <img src="Elsa-1-year-birthday-party.jpeg" style="max-width:100%;cursor:pointer" onclick="onClick(this)" class="modal-hover-opacity">
+                <div class="rowText">Wedding</div>
+            </div>
+        </div> 
+        
+        
+        <br>
+        <br>
+ <!-- /******** Transform Cube PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />
+        
+      <p>These cubes spin using animation and transform. The cubes are being rotated via transform every 4 seconds. The middle cube had perspective on it to make it feel like its coming off the page toward you. The last cube also is using a lower value for perspective. The animations are done completely with CSS. </p>    
+        
+      <div class="container3" > 
+          
+          <div class="cube-z"> 
+            <div class="cube-y"> 
+              <div class="cube-x"> 
+                <div class="face-one">1</div> 
+                <div class="face-two">2</div> 
+                <div class="face-three">3</div> 
+                <div class="face-four">4</div> 
+                <div class="face-five">5</div> 
+                <div class="face-six">6</div> 
+              </div> 
+            </div> 
+          </div> 
+
+          <div class="container4" > 
+          <div class="cube-z"> 
+            <div class="cube-y"> 
+              <div class="cube-x"> 
+                <div class="face-one">1</div> 
+                <div class="face-two">2</div> 
+                <div class="face-three">3</div> 
+                <div class="face-four">4</div> 
+                <div class="face-five">5</div> 
+                <div class="face-six">6</div> 
+              </div> 
+            </div> 
+          </div> 
+          </div>   
+          
+          <div class="container5" > 
+          <div class="cube-z"> 
+            <div class="cube-y"> 
+              <div class="cube-x"> 
+                <div><img  class="face-one"   src="Elsa-1-year-birthday-party.jpeg" style="max-width:400px"></div>
+                <div><img  class="face-two"   src="Elsa-1-year-birthday-party.jpeg" style="max-width:400px"></div>
+                <div><img  class="face-three" src="Elsa-1-year-birthday-party.jpeg" style="max-width:400px"></div>
+                <div><img  class="face-four"  src="Elsa-1-year-birthday-party.jpeg" style="max-width:400px"></div>
+                <div><img  class="face-five"  src="Elsa-1-year-birthday-party.jpeg" style="max-width:400px"></div>
+                <div><img  class="face-six"   src="Elsa-1-year-birthday-party.jpeg" style="max-width:400px"></div>
+              </div> 
+            </div> 
+          </div> 
+          </div>       
+          
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+  <!-- /******** Transform Images PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />
+        <h2>Hover Effects on Elements</h2>
+        <p>These effects can be put on an button, an image or anything you want. Effects help the user understand where they are and what they are doing on the webpage. The first one is a pop effect, then bounce-in and finally float. </p>
+        <div class="container6" > 
+          <div class="jump"> 
+
+                <div><img  class="photo-one   hvr-pop"        src="Elsa-1-year-birthday-party.jpeg" style="max-width:167px"></div>
+                <div><img  class="photo-two   hvr-bounce-in"  src="Elsa-1-year-birthday-party.jpeg" style="max-width:167px"></div>
+                <div><img  class="photo-three hvr-float"      src="Elsa-1-year-birthday-party.jpeg" style="max-width:167px"></div>
+           
+            </div> 
+         </div>       
+        
+    
+          
       
     </main>
       
       
     <footer>
-      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 5 May 2019 </p>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 19 June 2019 </p>
     </footer>
+    <script src="js/topic12.js"></script>   
   </body>
 </html>

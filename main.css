@@ -1,3 +1,6 @@
+/* Things to remember  */
+/* CSS accepts seconds and milliseconds for transition but Javascript only accepts millseconds (ms).  */
+
 /*
 Stylesheet for CIT261 website
 */
@@ -482,35 +485,348 @@ img {
     margin: 20px 0px 0px 30px;
 }
 
+/*************** Topic 11 ***************/
+
+/*****  CheckBoxes With a Checkmark topic 11 **********/
+
+.Ckbox {
+  width: 300px;
+  margin: 25px 0 0 20px;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+.Ckbox label {  
+  width: 300px;
+  font-size: 16px;
+  color: #4D4D4D;
+  position: absolute;
+  z-index: 10;
+  padding-left: 50px;
+  cursor: pointer;
+}
+.Ckbox input {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+.Ckbox input:checked ~ .check {
+  border-color: #00EA90;
+  box-shadow: 0px 0px 0px 15px #00EA90 inset;
+}
+.Ckbox input:checked ~ .check::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.Ckbox .check {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 100px;
+  background-color: #FFF;
+  border: 2px solid #00EA90;
+  box-shadow: 0px 0px 0px 0px #00EA90 inset;
+  transition: all 0.15s cubic-bezier(0, 1.05, 0.72, 1.07);
+}
+.Ckbox .check::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 4;
+  position: absolute;
+  transform: scale(0);
+  background-size: 50%;
+  background-image: url("check-mark.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition-delay: 0.2s !important;
+  transition: all 0.25s cubic-bezier(0, 1.05, 0.72, 1.07);
+}
+
+
+/*****  Gallery of photos topic 11 **********/
+
+.wrapGallery{
+ max-width: 742px; 
+ border: thin red  solid;      
+ margin: 0 auto;
+ padding: 20px;    
+}
+
+/* On the animation for the amount of time. However long you want to see a photo, multiply it by the number of photos.*/
+.gallery {
+  max-width: 600px;
+  border: thin black solid;
+  margin: 0 auto;
+  background: skyblue;
+  animation: fader 35s linear infinite;
+}
+
+.gallery img{
+  margin: 0 0 0 0;
+  padding: 0;     
+}
+
+/* Instead of guessing, count up the images minus 1. So in this case, 4 then divide by 100 and that is your interval. */
+/* Also, Put the first picture on the end as well. This stops a jerking motion. */
+@keyframes fader{
+      0% {background: url("nature-2_1280.jpg"); background-size: cover;}
+     25% {background: url("nature_1280.jpg ");  background-size: cover;}
+     50% {background: url("sunset-1_1280.jpg"); background-size: cover;}
+     75% {background: url("banner_1280.jpg ");  background-size: cover;}
+    100% {background: url("nature-2_1280.jpg"); background-size: cover;}
+}
+
+
+
+/* =========================
+   CSS ACCORDION - BASIC CSS ONLY
+   ========================= */
+   .final__accordion {
+      position: relative;
+      display: block;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+    }
+ 
+    .final__accordion .accordion__item {
+      display: block;
+    }
+ 
+    .final__accordion .accordion__content {
+      display: block;
+      padding: 0;
+      overflow: hidden;
+      height: 0;
+      -webkit-transition: height 0.5s ease, padding 0.3s linear;
+      transition: height 1s ease, padding 0.3s linear;
+    }
+ 
+    .final__accordion .accordion__content p {
+      padding: 20px;
+      margin:0;
+    }
+ 
+    .final__accordion .accordion__content:target {
+      height: 150px;
+      overflow-y: scroll;    
+    }
+ 
+    .final__accordion .accordion__trigger {
+      text-decoration: none;
+    }
+ 
+    .final__accordion .accordion__title {
+      position: relative;
+      display: block;
+      margin: 0;
+      padding: 10px;
+      font-size: 1em;
+      background-color: #00B3B4;
+      color: #FFFFFF;
+      border: 1px solid #379AA4;
+      -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, .5);
+      -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, .5);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, .5);
+      cursor: pointer;
+    }
+ 
+    .final__accordion .accordion__title:hover {
+      background-color: #0bbfc0;
+    }
+ 
+    .final__accordion .accordion__title:after {
+      position: absolute;
+      top: calc(50% - 5px);
+      right: 20px;
+      width: 7px;
+      height: 7px;
+      border-left: 2px solid #FFFFFF;
+      border-bottom: 2px solid #FFFFFF;
+      -webkit-transform: rotate(-45deg);
+              transform: rotate(-45deg);
+      content: "";
+    }
+
+
+/******** Better Accordion - JAVASCRIPT  in topic 11 ***************/
+
+.container2 {
+/*
+  width: 80%;
+  max-width: 600px;
+*/
+  margin: 40px 0 0 0;
+}
+
+button.accordion2 {
+  margin: 0;    
+  width: 100%;
+  background-color: whitesmoke;
+  border: none;
+  outline: none;
+  text-align: left;
+  padding: 15px 20px;
+  font-size: 18px;
+  color: #444;
+  cursor: pointer;
+  transition: background-color 0.3s linear;
+}
+
+button.accordion2:after {
+  content: '\f055';
+  font-family: "fontawesome";
+  font-size: 14px;
+  float: right;
+}
+
+button.accordion2.is-open:after {
+  content: '\f056';
+}
+
+button.accordion2:hover, button.accordion.is-open {
+  background-color: #ddd;
+}
+
+.accordion-content {
+  background-color: white;
+  border-left: 1px solid whitesmoke;
+  border-right: 1px solid whitesmoke;
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+
+
 
 
 /*************** Topic 12 ***************/
 
+
+
+.btn {
+    background: #428BCA;
+    color: #fff;
+    font-family: Sans-serif;
+    font-size: 20px;
+    height: 45px;
+    width: 150px;
+    line-height: 45px;
+    margin: 25px 25px;
+    text-align: center;
+    border: 0;
+    border-radius: 20px;
+    transition: all 0.3s ease 0s;
+}
+
+.btn:hover {
+  background-color: darkturquoise;
+}
+
+ .but {
+    background: #227ca7;
+    color: #fff;
+    font-family: Sans-serif;
+    font-size: 20px;
+    height: 45px;
+    width: 150px;
+    line-height: 45px;
+    margin: 25px 25px;
+    text-align: center;
+    border: 0;
+    border-radius: 20px;
+    transform: translate(-50%, -50%)
+    transition: all 0.3s ease 0s;
+}
+
+.but:hover {
+  background-color: #003B59;
+}
+
+/*********************/
+.but2{
+            color:#D3D3D3;
+            font-family: verdana;
+            width: 200px;
+            padding: 15px;
+            border: 2px solid #46A29E;
+            text-align: center;
+            position: absolute;
+/*            top:  60%;*/
+            left: 32%;
+            transform: translate(-50%,-50%);
+            overflow: hidden;
+            transition: .5s;
+        }
+.but2:after{
+            content: '';
+            width: 0px;
+            height: 120%;
+            position: absolute;
+            left: -10%;
+            bottom: 0;
+            background-color: #CCFFFF;
+            transform: skewX(15deg);
+            z-index: -1;
+            transition: .5s;
+        }
+.but2:hover{
+            cursor: pointer;
+            color:  #227ca7;
+        }
+.but2:hover:after{
+            left: -10%;
+            width: 120%;
+        }
+
+
+
+
+
+/******* Flip card section ************/
+
+
 .flip-box {
   background-color: transparent;
-  width: 300px;
+  width: 100%;
   height: 200px;
   border: 1px solid #f1f1f1;
   perspective: 1000px;
+  display: flex;
+  flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
 }
 
 .flip-box-inner {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 200px;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
 
-.flip-box:hover .flip-box-inner {
+.flip-box1:hover .flip-box-inner {
   transform: rotateX(180deg);
 }
 
+.flip-box2:hover .flip-box-inner {
+  transform: rotateX(180deg);
+}
+
+
 .flip-box-front, .flip-box-back {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 200px;
   backface-visibility: hidden;
 }
 
@@ -525,8 +841,28 @@ img {
   transform: rotateX(180deg);
 }
 
+/**********  Translate - Move the Boxes      **************/
 
+.transBox {
+    width: 80px;
+    height: 80px;
+    background-color:  #46A29E;
+/*    position: absolute;*/
+    text-align: center;
+    padding: 10px 0;
+    transition: all 1s ease-in-out;
+}
+.t1 {
+    left: 25px;
+    top: 50px;
+}
+.trans1 {
+    transform: translate(300px, 0px);
+}
 
+.trans2 {
+    transform: translateY(-100px);
+}
 /************************/
 /* Picture display */
 .modal {
@@ -575,18 +911,20 @@ box-sizing: border-box;
   flex: 20%;
   padding-right: 5px;
   animation-name: out;
-  animation-duration: 2s;    
+  animation-duration: .6s;    
 }
 
 /*img {vertical-align: middle;}*/
 
 .row img {
+/* Setting margin to auto on any block element is a cool trick to center the element horizontially. The element will take the width you set
+    and then the remaining space will be split up into the left and right margin. */ 
 /* Thank you margin auto!  trick to center the element horizontally  */
     margin: auto;
     vertical-align: middle;
     max-width:195px;
     max-height:195px;
-    transform: rotate(-10deg);
+    transform: rotate(10deg);
     
 }
 
@@ -609,6 +947,194 @@ box-sizing: border-box;
   text-align:center;
   width: 100%; 
 }
+
+
+/*******  Spinning CUBE  ***************/
+
+.container3 {
+  width: 400px;
+  margin: 50px 0 0 50px;
+  display: flex;
+}
+/* the caret= means anything that begins with cube, style this way.. */
+[class^="cube"] {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+}
+[class^="face-"] {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  color: rgba(0,0,0,0.75);
+  border: 1px solid;
+
+  font-size: 160px;
+  font-family: Avenir;
+  line-height: 1;
+  text-align: center;
+}
+
+.face-one {
+  transform: translateZ(100px);
+  background-color: hsla(329,58%,52%,0.8);  
+}
+.face-two {
+  transform: rotateX(90deg) translateZ(100px);
+  background-color: hsla(0,0%,13%,0.8);
+}
+.face-three {
+  transform: rotateY(90deg) translateZ(100px);
+  background-color: hsla(54,70%,68%,0.8);
+}
+.face-four {
+  transform: rotateY(-90deg) translateZ(100px);
+  background-color: hsla(190,81%,67%,0.8);
+}
+.face-five {
+  transform: rotateX(-90deg) translateZ(100px) rotate(180deg);
+  background-color: hsla(261,100%,75%,1.0);
+}
+.face-six {
+  transform: rotateY(180deg) translateZ(100px);
+  background-color: hsla(84,76%,53%,0.8);
+}
+.cube-z {transform: rotateZ(0deg);}
+.cube-y {transform: rotateY(0deg);}
+.cube-x {transform: rotateX(0deg);}
+
+
+.cube-z {animation: spin 4s infinite linear;}
+
+@keyframes spin {
+  from {transform: rotateY(0deg);}
+  to {transform: rotateY(360deg);}
+}
+/* perspective -  controls the distance between the viewer and the zero point of the z-axis (higher further away, lower closer to viewer)
+   increasing the 3D positioning.
+   perpective-origin (value1, value2) - value1 controls the horizontal and value2 controls the vertial. negative will tilt the axis
+*/
+.container4 {
+  margin: 0 0 0 100px;    
+  perspective: 400px;
+  perspective-origin: 25% -50%;
+}
+.container5 {
+  margin: 0 0 0 100px;
+  perspective: 600px;
+  perspective-origin: 25% -50%;    
+}
+.container5 img{
+  margin: 0 0 0 0;
+  position: absolute;
+  width:  200px;
+  height: 200px;
+  
+}
+
+/* hsla stands for (HUE, SATURATION, LIGHT AND ALPHA)  Go here to make one. http://hslpicker.com/#fffefa,0.59 */
+
+.container5 [class^="face-"] { 
+background-color: hsla(49, 100%, 99%, 0.59);
+}
+
+
+/*******  POP,  BOUNCE IN, and FLOAT  Photos  ***************/
+
+
+.container6 {
+  box-sizing: border-box;
+  display: flex;
+    
+}
+
+.jump{
+ margin: 100px;
+ display: flex;
+ width: 600px;
+ justify-content: center;
+}
+
+[class^="photo-"] {
+ margin: auto;
+ padding: 0 10px 0 10px;
+  
+}
+
+
+/********* This is the best website   http://ianlunn.github.io/Hover/   Shows you a ton of ideas.  *********/
+
+/* Pop */
+@-webkit-keyframes hvr-pop {
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+@keyframes hvr-pop {
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+.hvr-pop {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.hvr-pop:hover, .hvr-pop:focus, .hvr-pop:active {
+  -webkit-animation-name: hvr-pop;
+  animation-name: hvr-pop;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+
+/* Bounce In */
+.hvr-bounce-in {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.hvr-bounce-in:hover, .hvr-bounce-in:focus, .hvr-bounce-in:active {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+
+
+/* Float */
+.hvr-float {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-float:hover, .hvr-float:focus, .hvr-float:active {
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+
 
 
 
@@ -991,5 +1517,3 @@ box-sizing: border-box;
 */
  
 
-
-    
