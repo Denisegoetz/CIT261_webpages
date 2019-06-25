@@ -7,7 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="main.css" type="text/css" rel="stylesheet" media="screen">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" integrity="sha256-39jKbsb/ty7s7+4WzbtELS4vq9udJ+MDjGTD5mtxHZ0=" crossorigin="anonymous" />
+   
   </head>
   <body>
     <header>
@@ -20,14 +22,160 @@
       
     <main>
       <h1>Topic: Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries</h1>
+<!-- /******** NO Transition/Transition  PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
         
-         
+      <h2>CSS Transitions</h2>
+        
+      <p>We remember without transitions, changes to CSS take effect immediately, which can be a jarring user experience. Transitions allow you to make those changes gradually, slowly changing until it's final state. </p>
+    
       
+      <div class='parent'>
+          <div class='box1 inline-block'>Hover - No Transition</div>
+          <div class='box2 inline-block'>Hover - With Transition</div>
+      </div>
+    
+       <br> 
+<!-- /******** Checkbox PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" /> 
+        
+      <p>Look at these cute checkboxes. Notice how the checkmark transitions after you click the button.</p>
+        
+      <div>
+          <div class="Ckbox">
+            <input id="one" type="checkbox">
+            <span class="check"></span>
+            <label for="one">Check me!</label>
+          </div>
+          <div class="Ckbox">
+            <input id="two" type="checkbox">
+            <span class="check"></span>
+            <label for="two">Hey! Check me too :/</label>
+          </div>
+      </div>
+       <br>
+       <br>
+        
+<!-- /******** Gallery PORTION *********/ --> 
+        
+      <hr style="border: 2px solid mediumturquoise;" /> 
+       <h2>Gallery of Photos</h2> 
+        <p>This is better than a lava lamp!</p>
+        <div class="wrapGallery">
+           <div class="gallery"> 
+<!-- NOTE:  This image is just a place holder to keep the div consistent   -->
+            <img src="http://placekitten.com/600/300" style="width: 100%; opacity: 0">            
+           </div>
+        </div>
+        
+        <br>
+        <br>
+        
+<!-- /******** Slider of pictures (so Cool) PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />  
+        
+        <!-- /*** I took the time to resize the photos on a website to be all be the same size. Life is easier that way.****/ --> 
+        
+        <h2>Slider of Photos</h2> 
+        
+         <div class="carousel-container">        
+             <!-- /**** Don't forget these are icons from font awesome, basically arrows ****/ -->   
+             <i class="fas fa-chevron-right" id="nextBtn"></i>
+             <i class="fas fa-chevron-left"  id="prevBtn"></i>
+                       
+             <div class="carousel-slide">
+                 <img src="Food5.jpg" id="lastClone" alt="photo of food">
+                 <img src="Food1.jpg" alt="photo of food">
+                 <img src="Food2.jpg" alt="photo of food">
+                 <img src="Food3.jpg" alt="photo of food">
+                 <img src="Food4.jpg" alt="photo of food">
+                 <img src="Food5.jpg" alt="photo of food">
+                 <img src="Food1.jpg" id="first Clone" alt="photo of food">
+             </div>
+        </div>
+        
+        
+        <br>
+        <br>
+<!-- /******** All CSS Accordion  and then... JavaScript Accordion  PORTION *********/ -->    
+      <hr style="border: 2px solid mediumturquoise;" />         
+
+     
+        <h2>Basic Accordion <small>- Made from CSS only</small></h2>
+        <p>This accordion is created with CSS only. The transition properties of CSS make the displaying of the text smooth. That is done with transitioning the height from 0 to whatever height you want to view it at.  Notice how on a hover the color is trasitioned to a lighter one to let the user know what they are about to select.  One drawback is that  the accordion leaves a section open all the time. Also, in this example, you can only open one section at a time.</p>  
+           
+        <div class="content">
+
+            <h4>CSS3 Accordion</h4>
+            <div class="final__accordion">
+              <div class="accordion__item">
+                <a href="#final__tab1" class="accordion__trigger accordion__title">Accordion 1</a>
+                <div id="final__tab1" class="accordion__content"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor laborum, rerum quasi rem placeat quo ratione qui, optio id eaque laudantium reprehenderit aliquam vel cum necessitatibus ut doloremque ullam natus.</p>
+                <p>Once upon a time there were three little pigs and the time came for them to leave home and seek their fortunes. Before they left, their mother told them " Whatever you do , do it the best that you can because that's the way to get along in the world.  The first little pig built his house out of straw because it was the easiest thing to do. The second little pig built his house out of sticks. This was a little bit stronger than a straw house. The third little pig built his house out of bricks.</p></div>   
+              </div>
+              <div class="accordion__item">
+                <a href="#final__tab2" class="accordion__trigger accordion__title">Accordion 2</a>
+                <div id="final__tab2" class="accordion__content"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor laborum, rerum quasi rem placeat quo ratione qui, optio id eaque laudantium reprehenderit aliquam vel cum necessitatibus ut doloremque ullam natus.</p>
+                <p>One night the big bad wolf, who dearly loved to eat fat little piggies, came along and saw the first little pig in his house of straw. He said "Let me in, Let me in, little pig or I'll huff and I'll puff and I'll blow your house in!" "Not by the hair of my chinny chin chin", said the little pig. But of course the wolf did blow the house in and ate the first little pig. </p></div>     
+              </div>
+              <div class="accordion__item">
+                <a href="#final__tab3" class="accordion__trigger accordion__title">Accordion 3</a>
+                <div id="final__tab3" class="accordion__content"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor laborum, rerum quasi rem placeat quo ratione qui, optio id eaque laudantium reprehenderit aliquam vel cum necessitatibus ut doloremque ullam natus.</p>
+                
+                <p> The wolf then came to the house of sticks. "Let me in ,Let me in little pig or I'll huff and I'll puff and I'll blow your house in" "Not by the hair of my chinny chin chin", said the little pig. But the wolf blew that house in too, and ate the second little pig.</p></div>     
+              </div>
+            </div>
+            
+        </div>  
+         
+    <br>    
+ 
+        
+    <div class="container2">
+    <h2>Accordion <small>- even better with JavaScript </small></h2>
+      <h4>JavaScript Accordion</h4>
+        <p>This accordion is created with CSS and JavaScript. The transition properties of CSS make the displaying of the text smooth. This is my favorite accordion because it neatly collapses and if you want to have all the sections opened at once you can.  As a user, it would annoy me that I have to memorize or refer back to the previous section when only one section can be opened at a time. </p>  
+        
+        <button class="accordion2">Accordian #1</button>
+        <div class="accordion-content">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?
+          </p>
+        </div>
+
+
+        <button class="accordion2">Accordian #2</button>
+        <div class="accordion-content">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?
+          </p>
+        </div>
+
+
+        <button class="accordion2">Accordian #3</button>
+        <div class="accordion-content">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?
+          </p>
+        </div>
+     </div>    
+        
+
+    <br>
+    <br>    
+           
     </main>
       
       
     <footer>
-      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 5 May 2019 </p>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 20 June 2019 </p>
     </footer>
+    <script src="js/topic11.js"></script>   
   </body>
 </html>
