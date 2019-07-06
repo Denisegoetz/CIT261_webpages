@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Search FamilySearch</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <link href="main4.css" type="text/css" rel="stylesheet" media="screen">
+  <script src="https://unpkg.com/fs-js-lite@latest/dist/FamilySearch.min.js"></script>
+  
+</head>
+<body>
+
+<div class="container">
+	<h1>Search FamilySearch</h1>
+	<p>Login here first</p>
+	<button class="login btn btn-primary">Login</button>
+    
+    
+    <div class="container">
+    <input class="first_name" type="" name="" value="First Name">
+	<input class="last_name" type="" name="" value="Last Name">
+	<button class="search btn btn-success">Search</button>
+
+	  <ul class="results"></ul>
+    </div>
+ 
+</div>
+
+   
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+var fs = new FamilySearch({
+  environment: 'production',
+  appKey: 'a02j000000KTRjpAAH',
+  redirectUri: 'https://misbach.github.io/FS-TreeSearch/',
+  saveAccessToken: true,
+  tokenCookie: 'FS_AUTH_TOKEN'
+});
+fs.oauthResponse();
+$('.login').click(function() {
+	fs.oauthRedirect();
+});
+$('.search').click(function() {
+	fs.get('/platform/tree/search?q=givenName:'+$('.first_name').val()+'+surname:'+$('.last_name').val(), {
+  	headers: { Accept: 'application/x-gedcomx-atom+json' }
+	}, function(error, response) {
+		if (response.statusCode == 401) alert("You must login first");
+		var entries = response.data.entries;
+		for (var i=0; i<entries.length; i++) {
+			console.log(entries[i].content.gedcomx.persons[0]);
+			var name = entries[i].content.gedcomx.persons[0].display.name;
+			var birth = entries[i].content.gedcomx.persons[0].display.birthDate;
+			var place = entries[i].content.gedcomx.persons[0].display.birthPlace;
+			var link = "https://familysearch.org/tree/pedigree/"+entries[i].content.gedcomx.persons[0].id;
+			$('.results').append('<li><a href="'+link+'" target="_blank">'+name+'</a> - Birth Date: '+birth+' Place: '+place+'</li>');
+		}
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+/*
+Stylesheet for FamilySearch name search website
+*/
+/********** Reset *************/
+
+*, *:before, *:after {
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body, html, ul, li{
+    padding: 0;
+    font-family: 'Josefin Slab', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0.1em;
+}
+
+ul{
+    list-style-type: none;
+}
+
+/********* Page Sections *******/
+html {
+    background-color:  lightcyan;
+
+}
+
+body {
+    /* backgroud is rich tan color */
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    width: 95%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.container {
+    height:  30px;
+     width:  100%;
+  text-align: center;
+    display: in-block;
+}
+.name-container {
+    height:  40px;
+     width:  100%;
+     text-align: center;
+    display: in-block;
+}
+/******** Headings and Text **********/
+h1 {
+    font-family:"Trebuchet MS", Helvetica, sans-serif;
+    line-height: 1.2em;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    font-size: 1.5em;
+    margin-top: 5px;
+}
+h2 {
+    margin: 30px 0;
+
+}
+
+p {
+    margin: 0;
+    font-size: 1 em;
+}
+
+
+/* something may be wrong with button*/
+button {
+    margin-bottom: 10px;
+    background-color: white;
+}
+
