@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+  <head>
+    <title>Sapling Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="main3.css" type="text/css" rel="stylesheet" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:400,700&display=swap" rel="stylesheet">
+
+  </head>
+    <body>
+ <!--Navigation bar-->
+    <header class="navBar">   
+       <nav class="navRow">
+            <ul>
+                <li id='navLogo' onclick="window.location.href='topic16.html'">Sapling</li>
+                <li class="hvr-float"><a href="topic16.html">Home</a></li>
+                <li class="hvr-float"><a href="topic16.html">How-To</a></li>
+                <li class="hvr-float"><a href="topic18.html">Contact</a></li>
+            </ul>  
+        </nav>
+    </header> 
+<!--/ Navigation bar-->          
+            
+    
+            <div class="title-container">
+                <h1 id="title-heading" style="text-align: center"></h1>
+            </div>
+            
+            <div class="img-container focus" >
+            </div>
+            
+            <div class="hook">
+                <h2>We Offer</h2>
+                <h3>Genealogy resources to get you started</h3>
+            </div> 
+           
+            <div class='introVideos'> 
+                <div class='introVideosCont'>
+                    <div class="youtube">
+                        <iframe  src="https://www.youtube.com/embed/37b63zuDc9Y?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="youtube">
+                        <iframe  src="https://www.youtube.com/embed/1yU6cJnTAp8?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe> 
+                    </div>
+                    <div class="youtube">
+                        <iframe  src="https://www.youtube.com/embed/iXfkDeKqraA?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe> 
+                        
+                    </div>
+                </div>
+            </div>
+        
+            <div class="search-container">
+	            <h2>Find Family History Centers</h2>
+	            <p>This site is under construction</p>
+                <div id="map"></div>
+	        
+           </div>
+       
+<!--   <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      var map;
+      var service;
+      var infowindow;
+
+      function initMap() {
+        var usCenter = new google.maps.LatLng(42.3684,-83.3527);
+
+        infowindow = new google.maps.InfoWindow();
+
+        map = new google.maps.Map(
+            document.getElementById('map'), {center: usCenter, zoom: 8});
+
+        var request = {
+           query: 'LDS Family History Center',
+          fields: ['name', 'geometry'],
+        };
+
+        service = new google.maps.places.PlacesService(map);
+
+        service.findPlaceFromQuery(request, function(results, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              createMarker(results[i]);
+            }
+
+            map.setCenter(results[0].geometry.location);
+          }
+        });
+      }
+
+      function createMarker(place) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+      }
+    </script>-->
+    
+        
+    
+
+        
+    <footer>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 15 July 2019 </p>
+         
+    </footer>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjjqAQGdfDe98HEoWV_Sw35ThI-S2QwlY&libraries=places&callback=initMap" async defer></script>   
+     <script src="js/topic16.js"></script>       
+  </body>
+</html>        
