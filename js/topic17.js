@@ -1,4 +1,4 @@
-var titleString = "Your Family Tree is Waiting";
+var titleString = "How-To Topics of Genealogy";
 var strArray = titleString.split("");
 var loopTimer;
 
@@ -17,12 +17,3 @@ function frameLooper() {
 }
 
 frameLooper();
-
-
-
-
-
-
-
-    
-        

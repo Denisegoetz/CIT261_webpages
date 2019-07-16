@@ -17,7 +17,7 @@
             <ul>
                 <li id='navLogo' onclick="window.location.href='topic16.html'">Sapling</li>
                 <li class="hvr-float"><a href="topic16.html">Home</a></li>
-                <li class="hvr-float"><a href="topic16.html">How-To</a></li>
+                <li class="hvr-float"><a href="topic17.html">How-To</a></li>
                 <li class="hvr-float"><a href="topic18.html">Contact</a></li>
             </ul>  
         </nav>
@@ -37,7 +37,7 @@
                 <h3>Genealogy resources to get you started</h3>
             </div> 
            
-            <div class='introVideos'> 
+            <div class='introVideos '> 
                 <div class='introVideosCont'>
                     <div class="youtube">
                         <iframe  src="https://www.youtube.com/embed/37b63zuDc9Y?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
@@ -51,65 +51,144 @@
                     </div>
                 </div>
             </div>
+                
+            <div class="how-to"> 
+                <h2>How To Get Started</h2>
+                <h3>Our How-To page gets you started on your genealogy oganized by topic</h3>
+                <a class="hvr-float" href="topic17.html"><b> Click here for How-To page</b></a>
+            </div>    
         
-            <div class="search-container">
-	            <h2>Find Family History Centers</h2>
-	            <p>This site is under construction</p>
+            <div class="map-container">
+	            <h2>America's Top Genealogical Repositories</h2>
+	            <p>Visit an archival site near you</p>
+                <p class="small-text">Zoom Washington DC to see more</p>
                 <div id="map"></div>
-	        
            </div>
-       
-<!--   <script>
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-      var map;
-      var service;
-      var infowindow;
+        
+    <script>  
+    // I can't get this to work inside my other javascript file. I wonder if it has to be in here?     
+        
+    // The following Javascript is for the google map on the webpage. 
+    // It will get the map and center it on Topeka Kansas.  Then it will
+    // get all the markers I have defined in an array and put them on the map.
+    // These are Archival Records for Family History.
+
 
       function initMap() {
-        var usCenter = new google.maps.LatLng(42.3684,-83.3527);
+            //map options
+            var options = {
+                zoom: 4,
+                center: {lat: 39.0473, lng:-95.6752}  
+            }  
 
-        infowindow = new google.maps.InfoWindow();
 
-        map = new google.maps.Map(
-            document.getElementById('map'), {center: usCenter, zoom: 8});
+            //New map
+            var map = new google.maps.Map(
+                document.getElementById('map'), options);
 
-        var request = {
-           query: 'LDS Family History Center',
-          fields: ['name', 'geometry'],
-        };
 
-        service = new google.maps.places.PlacesService(map);
 
-        service.findPlaceFromQuery(request, function(results, status) {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-              createMarker(results[i]);
-            }
+          //Array of Markers
+          var markers = [
+              {
+              coords:{lat:38.8976763,lng:-77.0365298},
+              content:  '<h3> National Archives I </h3>'
+              },
+              {
+              coords:{lat:38.891239,lng:-77.030198},
+              content:  '<h3> National Archives II </h3>'
+              },
+              {
+              coords:{lat:41.0771,lng:-85.1432},
+              content:  '<h3> Allen County Public Library </h3>'
+              },
+              {
+              coords:{lat:38.8939,lng:-77.0402},
+              content:  '<h3> Daughters of the American Revel </h3>'
+              },
+              {
+              coords:{lat:40.7702,lng:-111.8945},
+              content:  '<h3> Family History Library </h3>'
+              },
+              {
+              coords:{lat:38.8887,lng:-77.0047},
+              content:  '<h3> Library of Congress </h3>'
+              },
+              {
+              coords:{lat:39.11164,lng:-94.39154},
+              content:  '<h3> Mid-Continent Public Library Midwest Genealogy Center </h3>'
+              },
+              {
+              coords:{lat:42.361145,lng:-71.057083},
+              content:  '<h3> New England Historic Genealogical Society </h3>'
+              },
+              {
+              coords:{lat:40.754799,lng:-73.984208},
+              content:  '<h3> New York Public Library </h3>'
+              },
+              {
+              coords:{lat:41.9000,lng:-87.6306},
+              content:  '<h3> Newberry Library </h3>'
+              },
+              {
+              coords:{lat:41.9000,lng:-87.6306},
+              content:  '<h3> Newberry Library </h3>'
+              }
 
-            map.setCenter(results[0].geometry.location);
+          ];
+
+          // Loop thru markers
+
+          for(var i=0; i < markers.length; i++) {
+             addMarker(markers[i]);
+
           }
-        });
+
+
+
+        //Add Marker Function
+        function addMarker(props){
+            var marker = new google.maps.Marker({
+                position: props.coords,
+                map: map,
+              //  icon:props.iconImage,
+                title: ' this is my title'
+
+            });  
+
+
+             // check for custom icon
+             if(props.iconImage){
+                 //set icon image
+                marker.setIcon(props.iconImage)
+             } 
+
+            // check for content 
+             if(props.content){
+
+               var infowindow = new google.maps.InfoWindow({ 
+
+                  content:props.content,
+                  maxWidth: 250
+               });
+
+
+               marker.addListener('click', function() {
+                infowindow.open(map, marker);
+               });
+             }  
+
+          }
+
       }
 
-      function createMarker(place) {
-        var marker = new google.maps.Marker({
-          map: map,
-          position: place.geometry.location
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name);
-          infowindow.open(map, this);
-        });
-      }
-    </script>-->
+    </script>  
     
-        
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjjqAQGdfDe98HEoWV_Sw35ThI-S2QwlY&callback=initMap">
+    </script>       
     
-
         
     <footer>
       <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 15 July 2019 </p>
