@@ -114,7 +114,6 @@ ul, li{
     background-repeat: no-repeat;
     background-size: cover; 
     display: flex;
-
     transition: max-height 0.8s;
 }
 
@@ -161,6 +160,7 @@ ul, li{
     to   { transform: translate(0, -80px), margin-top:-20px; }    
 }
 
+/******** The Hook  ***********/
 
 .hook{
     height: 25%;
@@ -467,7 +467,8 @@ p{  font-size: 1.6vh;
 }
 
 /***************************************************/
-/**** IPAD small turned LANDSCAPE *******/
+/****    IPAD small turned LANDSCAPE    *******/
+
 @media only screen 
     and (min-width: 768px) 
     and (max-width: 1024px) 
@@ -525,7 +526,8 @@ p{  font-size:  1.9vh;
 }
 
 /*****************************************************/
-/**** IPAD large  turned LANDSCAPE *******/
+/*****       IPAD large  turned LANDSCAPE     *******/
+
 @media only screen 
     and (min-width: 1024px) 
     and (max-width: 1366px) 
@@ -559,7 +561,6 @@ p{  font-size:  1.9vh;
 }            
           
 .about{
-
     padding-top: 0px;
 }     
         
@@ -706,10 +707,7 @@ p{  font-size: 1.3vh;
 }
     
 
-
 /******* Google map Container     *********/
-
-
 
 .map-container h2{
     height: 15%;
@@ -735,19 +733,68 @@ p{  font-size: 1.3vh;
 
     
     
-    
 /** next curly bracket = end of cell phone media **/   
 }
 
 
 /*******************************************/
 /**** Cell phone -  turned LANDSCAPE *******/
+
+/****  IPHONE X - X - in landscape   ******/
+
 @media only screen 
-    and (min-width: 320px) 
-    and (max-width: 480px)) 
-    and (orientation: landscape) {
+and (min-device-width : 375px) 
+and (max-device-width : 812px) 
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : landscape) {
+            
+    
+/********** Nav *************/
+.navBar{
+    height: 11%;
+}
+
+.navRow{
+    font-size: 1.2em; 
+}
+
+#navLogo{
+    font-size: 2vw;
+}
         
-/******* VIDEO Container - Cell phones   *********/
+ul>li:nth-child(3) {
+  flex: .7;
+}        
+        
+
+/******** Page settings **********/
+
+.title-container {
+    height: 12%;
+    font-size: 1vw; 
+}
+
+.img-container{
+    height: 60%;
+}
+
+/******** The Hook  ***********/    
+    
+.hook{
+    height: 32%;
+}
+
+.hook h2{
+    height: 50px;
+
+}
+
+.hook h3{
+    height: 40px;
+}
+
+        
+/******* VIDEO Container - Cell phones landscape   *********/
 .introVideos{
     height:  1150px;
 
@@ -764,43 +811,392 @@ p{  font-size: 1.3vh;
 .introVideosCont > .youtube {
     align-items: flex-start;
     flex: 3;
-    padding: .5em;
- 
-}
-        
-        
-}
-
-
-
-
-/* small cell phone */
-@media only screen 
-  and (min-device-width: 320px)
-  and (max-device-width: 411px)
-{
-	.box3 {
-        padding: 0;
-        left: 0;
-		margin-left: 0px;
-	}
+    padding: 1em;
     
-    .food {
-        padding: 0;
-        left: 0;
-		margin-left: 0px;
-    }
+}
+    
+/******** Main ***********/
+main {
+    background-color: #E1EEDB;
+    max-width: 960px;
+    height: 200%;
+    width: 80%;
+    margin: 0px auto;
+    padding: 20px 15px;
+    border: solid;
+    border-width: 10px;
+    border-color: darkolivegreen;
+
 }
 
-/* medium cell phone */
+p{  font-size: 3.4vh;
+    font-family:  sans-serif;
+    line-height: 1.4em;    
+}
+
+
+/******** How-To page  about ***********/
+
+section {
+    border-top: 2px solid #92AC86;
+    margin-bottom: 40px;
+    height: 20%;
+
+}
+    
+.how-to p {
+    font-size: 3.4vh;
+    line-height: 3.8vh;
+}
+    
+.how-to a{
+    text-decoration: none;
+    height: 9%;
+    font-size: 1.5vw;
+
+}
+    
+/******* How-to  Container     *********/
+
+.how-to{
+    height: 50%;
+}
+
+/******* Google map Container     *********/
+
+
+.map-container .small-text{
+    font-size: .9vw;
+}
+   
+        
+/** next curly bracket = end of  LANDSCAPE cell phone media iphone X **/        
+}
+
+
+/*****************************************/
+/***   iPhone 6, 7, & 8 in landscape   ***/
+
 @media only screen 
-  and (min-device-width: 412px)
-  and (max-device-width: 500px)
-{
-	.box3 {
-		margin-left: 5px;
-	}
-    .food {
-		margin-left: 5px;
-	}
+and (min-device-width : 375px) 
+and (max-device-width : 667px) 
+    and (orientation : landscape){
+        
+/********** Nav *************/
+.navBar{
+    height: 11%;
+}
+
+.navRow{
+    font-size: 1.1em; 
+}
+
+#navLogo{
+    font-size: 2.5vw;
+}
+        
+ul>li:nth-child(3) {
+  flex: 1.1;
+}        
+ 
+        
+.img-container{
+    height: 55%;
+}
+             
+/******** Main ***********/
+main {
+    background-color: #E1EEDB;
+    max-width: 960px;
+    height: 200%;
+    width: 80%;
+    margin: 0px auto;
+    padding: 20px 15px;
+    border: solid;
+    border-width: 10px;
+    border-color: darkolivegreen;
+
+}
+
+p{  font-size: 3.1vh;
+    font-family:  sans-serif;
+    line-height: 1.4em;    
+}
+
+/******** The Hook  ***********/
+
+.hook{
+    height: 25%;
+    padding-top:  20px;
+}
+
+.hook h2{
+    height: 40px;
+    font-size: 3.5vw;
+}
+ 
+.hook h3{
+    height: 50px;
+    font-size: 2.3vw;
+}          
+ 
+/***  VIDEO Container - Cell phones landscape ******/
+.introVideos{
+    height:  1150px;
+
+}
+
+.introVideosCont{
+    height:  400px;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  
+}
+
+.introVideosCont > .youtube {
+    align-items: flex-start;
+    flex: 3;
+    padding: 1em;
+    
+}
+            
+        
+/******** How-To page  about ***********/
+
+section {
+    border-top: 2px solid #92AC86;
+    margin-bottom: 40px;
+    height: 20%;
+
+}
+
+    
+.how-to p {
+    font-size: 3.4vh;
+    line-height: 4vh;
+}
+    
+.how-to a{
+    text-decoration: none;
+    height: 9%;
+    font-size: 1.5vw;
+
+}
+   
+.how-to h2{
+    height: 40px;
+    font-size: 3.2vw;
+}        
+        
+        
+/******* How-to  Container     *********/
+
+.how-to{
+    height: 50%;
+}
+        
+@keyframes floating {
+    from { transform: translate(0,  0px), margin-top:-10px; }
+    30%  { transform: translate(0, -10px); }
+    40%  { transform: translate(0, -18px); }
+    50%  { transform: translate(0, -22px); }
+    65%  { transform: translate(0, -28px); }
+    80%  { transform: translate(0, -30px); }
+    to   { transform: translate(0, -35px), margin-top:-20px; }    
+}    
+           
+
+/******* Google map Container     *********/
+
+.map-container h2{
+    font-size: 3.2vw;
+}
+
+.map-container p{
+     font-size: 2vw;
+}
+
+.map-container .small-text{
+    font-size: 1vw;
+}        
+         
+        
+/** next curly bracket = end of  LANDSCAPE cell phone media **/     
+}
+
+/*****************************************/
+/***   iPhone 6, 7, & 8 PLUS landscape ***/
+@media only screen 
+and (min-device-width : 414px) 
+and (max-device-width : 736px) 
+    and (orientation : landscape) {
+        
+.title-container {
+    height: 10.5%;
+    font-size: 1.1vw; 
+}
+        
+.how-to p {
+    font-size: 3vh;
+    line-height: 3.5vh;
+}
+p{  font-size: 3vh;
+    line-height: 1.4em;    
+}           
+  
+@keyframes floating {
+    from { transform: translate(0,  0px), margin-top:-10px; }
+    30%  { transform: translate(0, -10px); }
+    40%  { transform: translate(0, -18px); }
+    50%  { transform: translate(0, -22px); }
+    65%  { transform: translate(0, -28px); }
+    80%  { transform: translate(0, -30px); }
+    to   { transform: translate(0, -35px), margin-top:-20px; }    
+}  
+              
+/** next curly bracket = end of  LANDSCAPE cell phone media **/         
+}
+
+
+
+/*****************************************/
+/***   Pixel phone in landscape       ***/
+
+@media only screen 
+and (min-device-width : 411px) 
+and (max-device-width : 823px) 
+and (orientation : landscape){
+    
+    
+/********** Nav *************/
+.navBar{
+    height: 11%;
+}
+
+.navRow{
+    font-size: 1.2em; 
+}
+
+#navLogo{
+    font-size: 2.7vw;
+}
+        
+ul>li:nth-child(3) {
+  flex: .75;
+}            
+    
+/******** Page settings **********/
+
+.title-container {
+    height: 12%;
+    font-size: 1.2vw; 
+}
+
+.img-container{
+    height: 53%;
+}
+
+/******** The Hook  ***********/    
+    
+.hook{
+    height: 34%;
+}
+
+.hook h2{
+    height: 50px;
+
+}
+
+.hook h3{
+    height: 40px;
+}
+    
+/******* VIDEO Container - Cell phones landscape   *********/
+.introVideos{
+    height:  1150px;
+
+}
+
+.introVideosCont{
+    height:  400px;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  
+}
+
+.introVideosCont > .youtube {
+    align-items: flex-start;
+    flex: 3;
+    padding: 1em;
+    
+}
+   
+/******** Main ***********/
+main {
+    background-color: #E1EEDB;
+    max-width: 960px;
+    height: 200%;
+    width: 80%;
+    margin: 0px auto;
+    padding: 20px 15px;
+    border: solid;
+    border-width: 10px;
+    border-color: darkolivegreen;
+
+}    
+    
+/******** How-To page  about ***********/
+
+section {
+    border-top: 2px solid #92AC86;
+    margin-bottom: 40px;
+    height: 20%;
+
+}
+p{  font-size: 3vh;
+    line-height: 1.4em;    
+}  
+    
+.how-to p {
+    font-size: 3.4vh;
+    line-height: 4vh;
+}
+    
+.how-to a{
+    text-decoration: none;
+    height: 9%;
+    font-size: 1.5vw;
+
+}
+   
+.how-to h2{
+    height: 40px;
+    font-size: 3.2vw;
+}        
+        
+        
+/******* How-to  Container     *********/
+
+.how-to{
+    height: 50%;
+}
+
+/******* Google map Container     *********/
+
+.map-container h2{
+    font-size: 3.2vw;
+}
+
+.map-container p{
+     font-size: 2vw;
+}
+
+.map-container .small-text{
+    font-size: 1vw;
+}    
+    
+        
+/** next curly bracket = end of  LANDSCAPE cell phone media **/         
 }
