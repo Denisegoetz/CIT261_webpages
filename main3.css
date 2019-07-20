@@ -5,7 +5,7 @@ Stylesheet for Genealogy website
 
 *, *:before, *:after {
     margin: 0;
-    height: 100%;
+
     box-sizing: border-box;
 }
 
@@ -14,7 +14,7 @@ body, html, ul, li, p{
     font-family: 'Josefin Slab', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
     margin: 0.1em;
 }
 
@@ -28,54 +28,54 @@ ul, li{
     display: flex;
     flex-direction: column;
     font-family: 'Josefin Slab', sans-serif;
-    
+
 }
 
 .navRow{
     display: flex;
-    font-size: 1.4em; 
+    font-size: 1.4em;
 }
 
 .navRow > ul{
     display: flex;
-      width: 100%;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
-   
+
 }
 
 .navRow > ul > li{
     flex: .44;
-    padding: 1.2em;
-    
+    padding: 1em;
 }
 
 .navRow > ul > li > a{
     color: black;
-    
+    display: inline-block;
+    min-width: 3.75em;
 }
 .navRow > ul > li > a:hover{
     color: #26ab2a;
-    
+
 }
 
 /* Float Nav Buttons:  Home, How-To,Contact and link to How-to page */
 .hvr-float {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
 }
 .hvr-float:hover, .hvr-float:focus, .hvr-float:active {
-  -webkit-transform: translateY(-8px);
-  transform: translateY(-8px);
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
 }
 
 .navRow > ul > li > a{
@@ -98,50 +98,64 @@ ul, li{
 
 .title-container {
     width: 100%;
-    height: 11.5%;
     background-color: darkolivegreen;
     color: #f1f1f1;
-    position: relative;
+    position: absolute;
     z-index: 10;
     font-size: 1.3vw;
-    
+
 }
 
 .img-container{
-    background-image: url(rob-mulally-oacHEtIlXsA-unsplash.jpg);
-    height: 70%;
+    background-image: url(rob-mulally-oach_lite.jpg);
+    height: 65vh;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; 
-    display: flex;
+    background-size: cover;
+    display: block;
     transition: max-height 0.8s;
 }
 
 .img-container-slice{
-    height: 15%;
+    background-image: url(rob-mulally-oach_lite.jpg);
+    height: 25vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
     
 }
 
 
+@media only screen and (max-width: 1024px) {
+
+    .img-container{
+        height: 30vh;
+    }
+
+}
+
+
+
 /* focus works on the Home page to bring the picture in clear */
 .focus {
-  animation: focus 2.6s ease-in;
-  animation-fill-mode: forwards;    
+    animation: focus 2.6s ease-in;
+    animation-fill-mode: forwards;
 }
 
 @keyframes focus {
-  0% {
-    opacity:  0;
-  }
-  100% {
-    opacity:  1;
-  }
+    0% {
+        opacity:  0;
+    }
+    100% {
+        opacity:  1;
+    }
 }
 
 /* floating works on the Contact page to animate it a bit*/
-.floating {  
+.floating {
     animation-name: floating;
-    animation-duration: 3.8s;
+    animation-duration: 2.8s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in;
     margin-top: 0px;
@@ -149,24 +163,40 @@ ul, li{
     animation-fill-mode: forwards;
 }
 
+/*
 @keyframes floating {
-    from { transform: translate(0,  0px), margin-top:-10px; }
+    from { transform: translate(0,  0px); margin-top: -65px; }
     30%  { transform: translate(0, -20px); }
     40%  { transform: translate(0, -30px); }
     50%  { transform: translate(0, -40px); }
     60%  { transform: translate(0, -50px); }
     70%  { transform: translate(0, -60px); }
     80%  { transform: translate(0, -70px); }
-    to   { transform: translate(0, -80px), margin-top:-20px; }    
+    to   { transform: translate(0, -80px); margin-top: 80px; }
 }
+*/
+
+@keyframes floating {
+    from { transform: translate(0,  0px), margin-top: -10px; }
+    30%  { transform: translate(0, -20px); }
+    40%  { transform: translate(0, -30px); }
+    50%  { transform: translate(0, -40px); }
+    60%  { transform: translate(0, -50px); }
+    70%  { transform: translate(0, -60px); }
+    80%  { transform: translate(0, -70px); }
+    to   { transform: translate(0, -80px), margin-top: -20px; }    
+}
+
+
 
 /******** The Hook  ***********/
 
 .hook{
     height: 25%;
     text-align: center;
-    display: in-block;
+    display: block;
     padding-top:  45px;
+    margin-bottom: 1.5em;
 }
 
 .hook h2{
@@ -181,8 +211,8 @@ ul, li{
 h1{
     font-size: 3.8em;
     font-family: 'Josefin Slab', sans-serif;
-    padding-top: 8px;
-    
+    padding: 8px;
+
 }
 
 
@@ -201,7 +231,7 @@ main {
 
 p{  font-size: 2vh;
     font-family:  sans-serif;
-    line-height: 1.4em;    
+    line-height: 1.4em;
 }
 
 
@@ -219,57 +249,67 @@ section {
 
 /*******  VIDEO Container   *********/
 .introVideos{
-    height:  400px;
-     width:  100%;
+    width:  100%;
     background-color: black;
-    display: flex;
-    flex-direction: column;
-
 }
 
 .introVideosCont{
-     width:  100%;
-     height: 400px;
+    width:  100%;
     display:  flex;
-   
-}
-
-.introVideosCont > .youtube {
-    justify-content: space-around;
+    flex-flow: row nowrap;
     align-items: center;
-    flex: 3;
-    padding: 3em;    
+    justify-content: space-evenly;
+    padding: 3em 0;
 }
 
+/* Media query for YouTube iframes below 1024px*/
+/* If you want to change size? Do it here (.intoVideoCont .youtube) */
 
-* Next 2 bits are a fake out to get a full sized video on your page */
-/*            .youtube=container     .youtube iframe= makes video as large as container  */
-.youtube{
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 25px;
-    height: 0px;
+/******* VIDEO Container   *********/
+
+@media only screen and (max-width: 1024px) {
+
+    .introVideosCont {
+        flex-flow: column nowrap;
+        text-align: center;
+    }
+
+    .introVideosCont *+* {
+        margin-top: 2em;
+    }
+
+    .introVideosCont .youtube {
+        position: relative;
+        width: 50%;
+        padding-top: 35%;
+    }
+
+    .youtube iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
 
-.youtube iframe{
-    position: relative;
-    height: 300px;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
-    
+/* just in case */
+@media only screen and (max-width: 800px) {
+
+    .introVideosCont .youtube {
+        width: 75%;
+        padding-top: 50%;
+    }
+
 }
 
 /******* How-to  Container     *********/
 
 .how-to{
-    height: 25%;
+    height: 30%;
     text-align: center;
-    display: in-block;
-    padding-top:  45px;
+    display: block;
+    padding: 35px;
 }
 
 .how-to h2{
@@ -292,24 +332,24 @@ section {
 
 .map-container {
     height:  550px;
-     width:  100%;
+    width:  100%;
     background-color: black;
     color: white;
-    
+
 }
 
 .map-container h2{
     height: 15%;
     text-align: center;
-    display: in-block;
+    display: block;
     padding-top:  45px;
-     font-size: 2.6vw;
+    font-size: 2.6vw;
 }
 
 .map-container p{
     height: 5%;
     text-align: center;
-    display: in-block;
+    display: block;
     padding: 0;
 }
 
@@ -320,7 +360,7 @@ section {
 #map {
     height: 70%;
     width: 100%;
-    
+
 }
 
 .gm-style .gm-style-iw-c{
@@ -346,394 +386,304 @@ footer {
 
 
 /*******  IPADS  IPADS  IPADS ********/
-/**** IPADS big and small *******/
+/*******  IPADS big and small ********/
 
-@media only screen 
-  and (min-device-width: 768px)
-  and (max-device-width: 1024px)
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
 {
-	
- /********** nav *************/   
+
+    /********** nav *************/
+
+    .navBar{
+        height: 4%;
+    }
+
+    .navRow{
+        font-size: 1.8vw;
+    }
+
+    .navRow > ul > li{
+        padding: 1.2em;
+
+    }
     
-.navBar{
-    height: 4%;
-}
-    
-.navRow{
-    font-size: 1.8vw;
-}
+    #navLogo{
+        font-size: 3.1vw;
+    }
 
-.navRow > ul > li{
-    padding: 1.2em;
-    
-}
+    .title-container {
+        height: 4.5%;
+        font-size: 1.2vw;
 
-.title-container {
-    height: 4.5%;
-    font-size: 1.2vw;
-    
-}
-      
-.img-container{
-    height: 45%;
-/*    transition: max-height 0.5s;*/
-}
-    
-.img-container-slice{
-    height: 5%;
-    
-}    
-
-.floating {  
-    max-height: 45%;
-}
-
-@keyframes floating {
-    from { transform: translate(0,  0px), margin-top:-10px; }
-    30%  { transform: translate(0, -10px); }
-    40%  { transform: translate(0, -20px); }
-    50%  { transform: translate(0, -30px); }
-    65%  { transform: translate(0, -40px); }
-    80%  { transform: translate(0, -40px); }
-    to   { transform: translate(0, -50px), margin-top:-20px; }    
-}
-
-.hook{
-    height: 12%;
-    padding-top:  25px;
-}
-
-.hook h2{
-    height: 40px;
-}
-
-.hook h3{
-    height: 60px;
-}
-  
-/******* VIDEO Container   *********/
-.introVideos{
-    height:  280px;
-}
+    }
 
 
-.introVideosCont > .youtube {
-     padding: 2em;    
-}
+    .floating {
+        max-height: 45%;
+    }
 
 
-* Next 2 bits are a fake out to get a full sized video on your page */
-/*            .youtube=container     .youtube iframe= makes video as large as container  */
-.youtube{
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 25px;
-    height: 0px;
-}
+    .hook{
+        height: 12%;
+        padding-top:  25px;
+    }
 
-.youtube iframe{
-    position: relative;
-    height: 300px;
-    height: 100%;
-     width: 100%;
-    
-}
-     
-p{  font-size: 1.6vh;
-    line-height: 1em;    
-}      
-  
-    
-.how-to{
-    height: 18%;
-} 
-    
-.how-to p {
-    font-size: 2vw;
-    line-height: 2.2vh;
-}
-    
-.how-to a{
-    text-decoration: none;
-    height: 9%;
-    font-size: 2vw;
+    .hook h2{
+        height: 40px;
+    }
 
-}
-.map-container .small-text{
-    font-size: .9vw;
-}
-  
-/** next curly bracket = end of ipad media **/    
+    .hook h3{
+        height: 60px;
+    }
+
+
+    /* Next 2 bits are a fake out to get a full sized video on your page */
+    /*            .youtube=container     .youtube iframe= makes video as large as container  */
+
+    p{  font-size: 1.6vh;
+        line-height: 1em;
+    }
+
+
+    .how-to{
+        height: 18%;
+    }
+
+    .how-to p {
+        font-size: 2vw;
+        line-height: 2.2vh;
+    }
+
+    .how-to a{
+        text-decoration: none;
+        height: 9%;
+        font-size: 2vw;
+
+    }
+    .map-container .small-text{
+        font-size: .9vw;
+    }
+
+    /** next curly bracket = end of ipad media **/
 }
 
 /***************************************************/
 /****    IPAD small turned LANDSCAPE    *******/
 
-@media only screen 
-    and (min-width: 768px) 
-    and (max-width: 1024px) 
-    and (orientation: landscape) {
-    
-.navBar{
-    height: 5.5%;
-}
-    
-.title-container {
-    height: 7%;
-    font-size: 1.1vw;
-    
-}
-        
-.img-container{
-    height: 40%;
-}
-        
-.img-container-slice{
-    height: 5%;
-    
-} 
+@media only screen
+and (min-width: 768px)
+and (max-width: 1024px)
+and (orientation: landscape) {
 
-.hook{
-    height: 14%;
-    padding-top:  18px;
-}
+    .navBar{
+        height: 5.5%;
+    }
 
-.hook h2{
-    height: 35px;
-}
-        
-.how-to{
-    height: 25%;
-}
-        
-.how-to p {
-    font-size: 1.8vw;
-    line-height: 2.7vh;
-}
-    
-.how-to a{
-    text-decoration: none;
-    height: 9%;
-    font-size: 1.7vw;
+    .title-container {
+        height: 9%;
+        font-size: 1.1vw;
 
-}
-      
-p{  font-size:  1.9vh;
-    line-height: 1.4 em;    
-} 
-         
-/** next curly bracket = end of ipad "landscape" media **/  
+    }
+
+
+    .hook{
+        height: 14%;
+        padding-top:  18px;
+    }
+
+    .hook h2{
+        height: 35px;
+    }
+
+    .how-to{
+        height: 25%;
+    }
+
+    .how-to p {
+        font-size: 1.8vw;
+        line-height: 2.7vh;
+    }
+
+    .how-to a{
+        text-decoration: none;
+        height: 9%;
+        font-size: 1.7vw;
+
+    }
+
+    p{  font-size:  1.9vh;
+        line-height: 1.4em;
+    }
+
+    /** next curly bracket = end of ipad "landscape" media **/
 }
 
 /*****************************************************/
 /*****       IPAD large  turned LANDSCAPE     *******/
 
-@media only screen 
-    and (min-width: 1024px) 
-    and (max-width: 1366px) 
-    and (orientation: landscape) {
-        
- .title-container {
-    height: 7%;
-    font-size: 1.1vw;   
-}
-        
-.img-container{
-    height: 40%;
-}
-        
-.img-container-slice{
-    height: 5%;
-    
-} 
-        
-.hook{
-    height: 11%;
-    padding-top:  20px;
-}
+@media only screen
+and (min-width: 1024px)
+and (max-width: 1366px)
+and (orientation: landscape) {
 
-.hook h2{
-    height: 35px;
-}
-          
-.hook h3{
-    height: 50px;
-}            
-          
-.about{
-    padding-top: 0px;
-}     
-        
-p{  font-size:  1.8vh;
-    line-height: 1.3 em;    
-} 
-/** next curly braket = end of ipad "landscape" media **/          
+    .title-container {
+        height: 10%;
+        font-size: 1.1vw;
+        z-index: 10;
+    }
+
+    .hook{
+        height: 11%;
+        padding-top:  20px;
+    }
+
+    .hook h2{
+        height: 35px;
+    }
+
+    .hook h3{
+        height: 50px;
+    }
+
+
+    .about{
+        padding-top: 0px;
+    }
+
+    p{  font-size:  1.8vh;
+        line-height: 1.3em;
+    }
+    /** next curly braket = end of ipad "landscape" media **/
 }
 
 /*****************************************************/
-/***************   SMARTPHONES   ********************/
-/* 
+/****************   SMARTPHONES   ********************/
+/*****************************************************/
+/*
   ##Device = Most of the Smartphones Mobiles (Portrait)
   ##Screen = B/w 320px to 479px
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
-  
-/********** nav *************/
-.navBar{
-    height: 6%;
-}
 
-.navRow{
-    font-size: 1em; 
-}
+    /********** nav *************/
+    .navBar{
+        height: 5%;
+    }
 
-.navRow > ul > li{
-    flex: .44;
-    padding: 1em;
-    
-}
+    .navRow{
+        font-size: 1em;
+    }
 
-#navLogo{    
-    font-size: 3.7vw;
-}
-        
-ul>li:nth-child(3) {
-  flex: 2.4;
-}
-    
-/******** Page settings **********/
+    .navRow > ul > li{
+        flex: .44;
+        padding: 1em;
 
-.title-container {
-    height: 5.5%;
-    font-size: 1.8vw;
-}
+    }
 
-.img-container{
-    height: 35%;
-}
-     
-/******** hook  **********/    
-    
-.hook{
-    height: 20%;
-    padding-top:  35px;
-}
+    #navLogo{
+        font-size: 3.7vw;
+    }
 
-.hook h2{
-    height: 40px;
-    font-size: 3.2vh
-}
+    ul>li:nth-child(3) {
+        flex: 2.4;
+    }
 
-.hook h3{
-    height: 42px;
-    font-size: 3.5vw;
-}
-    
+    /******** Page settings **********/
+
+    .title-container {
+        height: 5.5%;
+        font-size: 1.8vw;
+    }
 
 
-/******** Main ***********/
-p{  font-size: 1.3vh;
-    font-family:  sans-serif;
-    line-height: .9em;    
-}
-  
-    
-@keyframes floating {
-    from { transform: translate(0,  0px), margin-top:-10px; }
-    30%  { transform: translate(0, -10px); }
-    40%  { transform: translate(0, -18px); }
-    50%  { transform: translate(0, -22px); }
-    65%  { transform: translate(0, -28px); }
-    80%  { transform: translate(0, -30px); }
-    to   { transform: translate(0, -35px), margin-top:-20px; }    
-}    
-    
-    
-    
-/******* VIDEO Container - Cell phones   *********/
-.introVideos{
-    height:  1150px;
+    /******** hook  **********/
 
-}
+    .hook{
+        height: 20%;
+        padding-top:  35px;
+    }
 
-.introVideosCont{
-    height:  400px;
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-  
-}
+    .hook h2{
+        height: 40px;
+        font-size: 2.8vh
+    }
 
-.introVideosCont > .youtube {
-    align-items: flex-start;
-    flex: 3;
-    padding: .5em;
- 
-}
-    
-    
-/******* How-to  Container     *********/
-
-.how-to{
-    height: 25%;
-    text-align: center;
-    display: in-block;
-    padding-top:  45px;
-}
-
-.how-to h2{
-    height: 40px;
-    font-size: 3.8vw;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-}
-
-.how-to h3{
-    height: 40px;
-    font-size: 3.5vw;
-
-}
-
-.how-to p {
-    font-size: 2.8vw;
-    line-height: 2vh;
-}
-    
-.how-to a{
-    text-decoration: none;
-    height: 9%;
-    font-size: 2.4vw;
-
-}
-    
-
-/******* Google map Container     *********/
-
-.map-container h2{
-    height: 15%;
-    font-size: 2.3vh;
-}
+    .hook h3{
+        height: 42px;
+        font-size: 3.5vw;
+    }
 
 
 
-.map-container .small-text{
-    font-size: .7vh;
-}
+    /******** Main ***********/
+    p{  font-size: 1.3vh;
+        font-family:  sans-serif;
+        line-height: .9em;
+    }
 
-#map {
-    height: 60%;
-    width: 100%;
-    
-}
 
-.gm-style .gm-style-iw-c{
-    height: 50px;
-    color: black;
-}
+    /******* How-to  Container     *********/
 
-    
-    
-/** next curly bracket = end of cell phone media **/   
+    .how-to{
+        height: 25%;
+        text-align: center;
+        display: inline-block;
+        padding-top:  45px;
+    }
+
+    .how-to h2{
+        height: 60px;
+        font-size: 2vh;
+    }
+
+    .how-to h3{
+        height: 40px;
+        font-size: 3.5vw;
+
+    }
+
+    .how-to p {
+        font-size: 2.8vw;
+        line-height: 2vh;
+    }
+
+    .how-to a{
+        text-decoration: none;
+        height: 9%;
+        font-size: 2.4vw;
+
+    }
+
+
+    /******* Google map Container     *********/
+
+    .map-container h2{
+        height: 15%;
+        font-size: 2.3vh;
+    }
+
+
+
+    .map-container .small-text{
+        font-size: .7vh;
+    }
+
+    #map {
+        height: 60%;
+        width: 100%;
+
+    }
+
+    .gm-style .gm-style-iw-c{
+        height: 50px;
+        color: black;
+    }
+
+
+
+    /** next curly bracket = end of cell phone media **/
 }
 
 
@@ -742,320 +692,258 @@ p{  font-size: 1.3vh;
 
 /****  IPHONE X - X - in landscape   ******/
 
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 812px) 
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 812px)
 and (-webkit-device-pixel-ratio : 3)
 and (orientation : landscape) {
-            
+
+
+    /********** Nav *************/
+    .navBar{
+        height: 11%;
+    }
+
+    .navRow{
+        font-size: 1.2em;
+    }
+
+/*    #navLogo{
+        font-size: 2.7vw;
+    }*/
+
+    ul>li:nth-child(3) {
+        flex: .7;
+    }
+
+
+    /******** Page settings **********/
+
+    .title-container {
+        height: 12%;
+        font-size: 1vw;
+    }
+
+
+    /******** The Hook  ***********/
+
+    .hook{
+        height: 32%;
+    }
+
+    .hook h2{
+        height: 50px;
+
+    }
+
+    .hook h3{
+        height: 40px;
+    }
+
+
+    /******* VIDEO Container - Cell phones landscape   *********/
+
+
+    /******** Main ***********/
+    main {
+        background-color: #E1EEDB;
+        max-width: 960px;
+        height: 200%;
+        width: 80%;
+        margin: 0px auto;
+        padding: 20px 15px;
+        border: solid;
+        border-width: 10px;
+        border-color: darkolivegreen;
+
+    }
+
+    p{  font-size: 3.4vh;
+        font-family:  sans-serif;
+        line-height: 1.4em;
+    }
+
+
+    /******** How-To page  about ***********/
+
+    section {
+        border-top: 2px solid #92AC86;
+        margin-bottom: 40px;
+        height: 20%;
+
+    }
     
-/********** Nav *************/
-.navBar{
-    height: 11%;
-}
 
-.navRow{
-    font-size: 1.2em; 
-}
+    .how-to p {
+        font-size: 3.4vh;
+        line-height: 3.8vh;
+    }
 
-#navLogo{
-    font-size: 2vw;
-}
-        
-ul>li:nth-child(3) {
-  flex: .7;
-}        
-        
+    .how-to a{
+        text-decoration: none;
+        height: 9%;
+        font-size: 1.5vw;
 
-/******** Page settings **********/
+    }
 
-.title-container {
-    height: 12%;
-    font-size: 1vw; 
-}
+    /******* How-to  Container     *********/
 
-.img-container{
-    height: 60%;
-}
+    .how-to{
+        height: 50%;
+    }
 
-/******** The Hook  ***********/    
-    
-.hook{
-    height: 32%;
-}
-
-.hook h2{
-    height: 50px;
-
-}
-
-.hook h3{
-    height: 40px;
-}
-
-        
-/******* VIDEO Container - Cell phones landscape   *********/
-.introVideos{
-    height:  1150px;
-
-}
-
-.introVideosCont{
-    height:  400px;
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-  
-}
-
-.introVideosCont > .youtube {
-    align-items: flex-start;
-    flex: 3;
-    padding: 1em;
-    
-}
-    
-/******** Main ***********/
-main {
-    background-color: #E1EEDB;
-    max-width: 960px;
-    height: 200%;
-    width: 80%;
-    margin: 0px auto;
-    padding: 20px 15px;
-    border: solid;
-    border-width: 10px;
-    border-color: darkolivegreen;
-
-}
-
-p{  font-size: 3.4vh;
-    font-family:  sans-serif;
-    line-height: 1.4em;    
-}
+    /******* Google map Container     *********/
 
 
-/******** How-To page  about ***********/
-
-section {
-    border-top: 2px solid #92AC86;
-    margin-bottom: 40px;
-    height: 20%;
-
-}
-    
-.how-to p {
-    font-size: 3.4vh;
-    line-height: 3.8vh;
-}
-    
-.how-to a{
-    text-decoration: none;
-    height: 9%;
-    font-size: 1.5vw;
-
-}
-    
-/******* How-to  Container     *********/
-
-.how-to{
-    height: 50%;
-}
-
-/******* Google map Container     *********/
+    .map-container .small-text{
+        font-size: .9vw;
+    }
 
 
-.map-container .small-text{
-    font-size: .9vw;
-}
-   
-        
-/** next curly bracket = end of  LANDSCAPE cell phone media iphone X **/        
+    /** next curly bracket = end of  LANDSCAPE cell phone media iphone X **/
 }
 
 
 /*****************************************/
 /***   iPhone 6, 7, & 8 in landscape   ***/
 
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) 
-    and (orientation : landscape){
-        
-/********** Nav *************/
-.navBar{
-    height: 11%;
-}
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px)
+and (orientation : landscape){
 
-.navRow{
-    font-size: 1.1em; 
-}
+    /********** Nav *************/
+    .navBar{
+        height: 11%;
+    }
 
-#navLogo{
-    font-size: 2.5vw;
-}
-        
-ul>li:nth-child(3) {
-  flex: 1.1;
-}        
- 
-        
-.img-container{
-    height: 55%;
-}
-             
-/******** Main ***********/
-main {
-    background-color: #E1EEDB;
-    max-width: 960px;
-    height: 200%;
-    width: 80%;
-    margin: 0px auto;
-    padding: 20px 15px;
-    border: solid;
-    border-width: 10px;
-    border-color: darkolivegreen;
+    .navRow{
+        font-size: 1.1em;
+    }
 
-}
+    #navLogo{
+        font-size: 3.5vw;
+    }
 
-p{  font-size: 3.1vh;
-    font-family:  sans-serif;
-    line-height: 1.4em;    
-}
+    ul>li:nth-child(3) {
+        flex: 1.1;
+    }
 
-/******** The Hook  ***********/
 
-.hook{
-    height: 25%;
-    padding-top:  20px;
-}
+    /******** Main ***********/
+    main {
+        background-color: #E1EEDB;
+        max-width: 960px;
+        height: 200%;
+        width: 80%;
+        margin: 0px auto;
+        padding: 20px 15px;
+        border: solid;
+        border-width: 10px;
+        border-color: darkolivegreen;
 
-.hook h2{
-    height: 40px;
-    font-size: 3.5vw;
-}
- 
-.hook h3{
-    height: 50px;
-    font-size: 2.3vw;
-}          
- 
-/***  VIDEO Container - Cell phones landscape ******/
-.introVideos{
-    height:  1150px;
+    }
 
-}
+    p{  font-size: 3.1vh;
+        font-family:  sans-serif;
+        line-height: 1.4em;
+    }
 
-.introVideosCont{
-    height:  400px;
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-  
-}
+    /******** The Hook  ***********/
 
-.introVideosCont > .youtube {
-    align-items: flex-start;
-    flex: 3;
-    padding: 1em;
-    
-}
-            
-        
-/******** How-To page  about ***********/
+    .hook{
+        height: 25%;
+        padding-top:  20px;
+    }
 
-section {
-    border-top: 2px solid #92AC86;
-    margin-bottom: 40px;
-    height: 20%;
+    .hook h2{
+        height: 40px;
+        font-size: 3.5vw;
+    }
 
-}
+    .hook h3{
+        height: 50px;
+        font-size: 2.3vw;
+    }
 
-    
-.how-to p {
-    font-size: 3.4vh;
-    line-height: 4vh;
-}
-    
-.how-to a{
-    text-decoration: none;
-    height: 9%;
-    font-size: 1.5vw;
+    /***  VIDEO Container - Cell phones landscape ******/
 
-}
-   
-.how-to h2{
-    height: 40px;
-    font-size: 3.2vw;
-}        
-        
-        
-/******* How-to  Container     *********/
 
-.how-to{
-    height: 50%;
-}
-        
-@keyframes floating {
-    from { transform: translate(0,  0px), margin-top:-10px; }
-    30%  { transform: translate(0, -10px); }
-    40%  { transform: translate(0, -18px); }
-    50%  { transform: translate(0, -22px); }
-    65%  { transform: translate(0, -28px); }
-    80%  { transform: translate(0, -30px); }
-    to   { transform: translate(0, -35px), margin-top:-20px; }    
-}    
-           
+    /******** How-To page  about ***********/
 
-/******* Google map Container     *********/
+    section {
+        border-top: 2px solid #92AC86;
+        margin-bottom: 40px;
+        height: 20%;
 
-.map-container h2{
-    font-size: 3.2vw;
-}
+    }
 
-.map-container p{
-     font-size: 2vw;
-}
 
-.map-container .small-text{
-    font-size: 1vw;
-}        
-         
-        
-/** next curly bracket = end of  LANDSCAPE cell phone media **/     
+    .how-to p {
+        font-size: 3.4vh;
+        line-height: 4vh;
+    }
+
+    .how-to a{
+        text-decoration: none;
+        height: 9%;
+        font-size: 1.5vw;
+
+    }
+
+    .how-to h2{
+        height: 40px;
+        font-size: 3.2vw;
+    }
+
+
+    /******* How-to  Container     *********/
+
+    .how-to{
+        height: 50%;
+    }
+
+
+    /******* Google map Container     *********/
+
+    .map-container h2{
+        font-size: 3.2vw;
+    }
+
+    .map-container p{
+        font-size: 2vw;
+    }
+
+    .map-container .small-text{
+        font-size: 1vw;
+    }
+
+
+  /** next curly bracket = end of  LANDSCAPE cell phone media **/
 }
 
 /*****************************************/
 /***   iPhone 6, 7, & 8 PLUS landscape ***/
-@media only screen 
-and (min-device-width : 414px) 
-and (max-device-width : 736px) 
-    and (orientation : landscape) {
-        
-.title-container {
-    height: 10.5%;
-    font-size: 1.1vw; 
-}
-        
-.how-to p {
-    font-size: 3vh;
-    line-height: 3.5vh;
-}
-p{  font-size: 3vh;
-    line-height: 1.4em;    
-}           
-  
-@keyframes floating {
-    from { transform: translate(0,  0px), margin-top:-10px; }
-    30%  { transform: translate(0, -10px); }
-    40%  { transform: translate(0, -18px); }
-    50%  { transform: translate(0, -22px); }
-    65%  { transform: translate(0, -28px); }
-    80%  { transform: translate(0, -30px); }
-    to   { transform: translate(0, -35px), margin-top:-20px; }    
-}  
-              
-/** next curly bracket = end of  LANDSCAPE cell phone media **/         
+@media only screen
+and (min-device-width : 414px)
+and (max-device-width : 736px)
+and (orientation : landscape) {
+
+    .title-container {
+        height: 10.5%;
+        font-size: 1.1vw;
+    }
+
+    .how-to p {
+        font-size: 3vh;
+        line-height: 3.5vh;
+    }
+    p{  font-size: 3vh;
+        line-height: 1.4em;
+    }
+
+
+ /** next curly bracket = end of  LANDSCAPE cell phone media **/
 }
 
 
@@ -1063,140 +951,119 @@ p{  font-size: 3vh;
 /*****************************************/
 /***   Pixel phone in landscape       ***/
 
-@media only screen 
-and (min-device-width : 411px) 
-and (max-device-width : 823px) 
+@media only screen
+and (min-device-width : 411px)
+and (max-device-width : 823px)
 and (orientation : landscape){
-    
-    
-/********** Nav *************/
-.navBar{
-    height: 11%;
+
+
+    /********** Nav *************/
+    .navBar{
+        height: 11%;
+    }
+
+    .navRow{
+        font-size: 1.2em;
+    }
+
+    #navLogo{
+        font-size: 3.4vw;
+    }
+
+    ul>li:nth-child(3) {
+        flex: .75;
+    }
+
+    /******** Page settings **********/
+
+    .title-container {
+        height: 11%;
+        font-size: 1.2vw;
+    }
+
+
+    /******** The Hook  ***********/
+
+    .hook{
+        height: 34%;
+    }
+
+    .hook h2{
+        height: 50px;
+
+    }
+
+    .hook h3{
+        height: 40px;
+    }
+
+    /******* VIDEO Container - Cell phones landscape   *********/
+
+    /******** Main ***********/
+    main {
+        background-color: #E1EEDB;
+        max-width: 960px;
+        height: 200%;
+        width: 80%;
+        margin: 0px auto;
+        padding: 20px 15px;
+        border: solid;
+        border-width: 10px;
+        border-color: darkolivegreen;
+
+    }
+
+    /******** How-To page  about ***********/
+
+    section {
+        border-top: 2px solid #92AC86;
+        margin-bottom: 40px;
+        height: 20%;
+
+    }
+    p{  font-size: 3vh;
+        line-height: 1.4em;
+    }
+
+    .how-to p {
+        font-size: 3.4vh;
+        line-height: 4vh;
+    }
+
+    .how-to a{
+        text-decoration: none;
+        height: 9%;
+        font-size: 1.5vw;
+
+    }
+
+    .how-to h2{
+        height: 50px;
+        font-size: 2.8vw;
+    }
+
+
+    /******* How-to  Container     *********/
+
+    .how-to{
+        height: 50%;
+    }
+
+    /******* Google map Container     *********/
+
+    .map-container h2{
+        font-size: 3.2vw;
+    }
+
+    .map-container p{
+        font-size: 2vw;
+    }
+
+    .map-container .small-text{
+        font-size: 1vw;
+    }
+
+
+    /** next curly bracket = end of  LANDSCAPE cell phone media **/
 }
 
-.navRow{
-    font-size: 1.2em; 
-}
-
-#navLogo{
-    font-size: 2.7vw;
-}
-        
-ul>li:nth-child(3) {
-  flex: .75;
-}            
-    
-/******** Page settings **********/
-
-.title-container {
-    height: 12%;
-    font-size: 1.2vw; 
-}
-
-.img-container{
-    height: 53%;
-}
-
-/******** The Hook  ***********/    
-    
-.hook{
-    height: 34%;
-}
-
-.hook h2{
-    height: 50px;
-
-}
-
-.hook h3{
-    height: 40px;
-}
-    
-/******* VIDEO Container - Cell phones landscape   *********/
-.introVideos{
-    height:  1150px;
-
-}
-
-.introVideosCont{
-    height:  400px;
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-  
-}
-
-.introVideosCont > .youtube {
-    align-items: flex-start;
-    flex: 3;
-    padding: 1em;
-    
-}
-   
-/******** Main ***********/
-main {
-    background-color: #E1EEDB;
-    max-width: 960px;
-    height: 200%;
-    width: 80%;
-    margin: 0px auto;
-    padding: 20px 15px;
-    border: solid;
-    border-width: 10px;
-    border-color: darkolivegreen;
-
-}    
-    
-/******** How-To page  about ***********/
-
-section {
-    border-top: 2px solid #92AC86;
-    margin-bottom: 40px;
-    height: 20%;
-
-}
-p{  font-size: 3vh;
-    line-height: 1.4em;    
-}  
-    
-.how-to p {
-    font-size: 3.4vh;
-    line-height: 4vh;
-}
-    
-.how-to a{
-    text-decoration: none;
-    height: 9%;
-    font-size: 1.5vw;
-
-}
-   
-.how-to h2{
-    height: 40px;
-    font-size: 3.2vw;
-}        
-        
-        
-/******* How-to  Container     *********/
-
-.how-to{
-    height: 50%;
-}
-
-/******* Google map Container     *********/
-
-.map-container h2{
-    font-size: 3.2vw;
-}
-
-.map-container p{
-     font-size: 2vw;
-}
-
-.map-container .small-text{
-    font-size: 1vw;
-}    
-    
-        
-/** next curly bracket = end of  LANDSCAPE cell phone media **/         
-}
