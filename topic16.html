@@ -58,140 +58,125 @@
                 <a class="hvr-float" href="topic17.html"><b> Click here for How-To page</b></a>
             </div>    
         
+
+        
             <div class="map-container">
-	            <h2>America's Top Genealogical Repositories</h2>
-	            <p>Visit an archival site near you</p>
-                <p class="small-text">Zoom Washington DC to see more</p>
+	            <h2> Search for LDS Family History Centers</h2>
+	            <p>Use the Search Bar for Location</p>
+                <p class="small-text">Search finds any kind of place</p>
+                
+               <div class="mb-2">
+                   <div class="col">
+                   <input class="form-control" id="search" type="text" placeholder="Search... LDS Family History Center" />
+                   </div>
+               </div>
+                
                 <div id="map"></div>
            </div>
+        
+          <div class="map-container">
+	      <h2> Get the Weather</h2>
+	      <p>Search the Weather by City</p>
+
+               <div class="col">
+               <input class="search-control" id="searchInput" type="text" placeholder="Type City Name or Zipcode" />
+               <button class="search-control" id="searchBtn" >Search</button>
+               </div>
+
+               <div id="weatherContainer">
+                  <div id="weatherDescription" style="color: azure;">
+                         <h1 id="cityHeader">  </h1>
+                         <div id="weatherMain">
+                            <div id="temperature"></div>
+                            <div id="weatherDescriptionHeader"></div>
+                            <div> <img id="documentIconImg"> </div>
+                         </div>
+                      <div style="width: 100%; border-top: 2px solid white;"></div>
+                         <div id="windSpeed" class="bottomDetails"></div>
+                         <div id="humidity" class="bottomDetails"></div>
+                   </div>
+                      
+                </div>        
+               
+
+          </div>
+
 
         
     <script>  
     // I can't get this to work inside my other javascript file. I wonder if it has to be in here?     
         
     // The following Javascript is for the google map on the webpage. 
-    // It will get the map and center it on Topeka Kansas.  Then it will
-    // get all the markers I have defined in an array and put them on the map.
-    // These are Archival Records for Family History.
-
-
-      function initMap() {
-            //map options
-            var options = {
-                zoom: 4,
-                center: {lat: 39.0473, lng:-95.6752}  
-            }  
-
-
-            //New map
-            var map = new google.maps.Map(
-                document.getElementById('map'), options);
+    // It will get the map and center it on Topeka Kansas.  Then the user
+    // types in the search bar what they are looking for... like LDS Family History Center
+    // and the map will focus in on their area and show them. 
+    // Note: they could search for anything, like... Honda Dealerships. 
 
 
 
-          //Array of Markers
-          var markers = [
-              {
-              coords:{lat:38.8976763,lng:-77.0365298},
-              content:  '<h3> National Archives I </h3>'
-              },
-              {
-              coords:{lat:38.891239,lng:-77.030198},
-              content:  '<h3> National Archives II </h3>'
-              },
-              {
-              coords:{lat:41.0771,lng:-85.1432},
-              content:  '<h3> Allen County Public Library </h3>'
-              },
-              {
-              coords:{lat:38.8939,lng:-77.0402},
-              content:  '<h3> Daughters of the American Revel </h3>'
-              },
-              {
-              coords:{lat:40.7702,lng:-111.8945},
-              content:  '<h3> Family History Library </h3>'
-              },
-              {
-              coords:{lat:38.8887,lng:-77.0047},
-              content:  '<h3> Library of Congress </h3>'
-              },
-              {
-              coords:{lat:39.11164,lng:-94.39154},
-              content:  '<h3> Mid-Continent Public Library Midwest Genealogy Center </h3>'
-              },
-              {
-              coords:{lat:42.361145,lng:-71.057083},
-              content:  '<h3> New England Historic Genealogical Society </h3>'
-              },
-              {
-              coords:{lat:40.754799,lng:-73.984208},
-              content:  '<h3> New York Public Library </h3>'
-              },
-              {
-              coords:{lat:41.9000,lng:-87.6306},
-              content:  '<h3> Newberry Library </h3>'
-              },
-              {
-              coords:{lat:41.9000,lng:-87.6306},
-              content:  '<h3> Newberry Library </h3>'
-              }
+        function createMap () {
+          var options = {
 
-          ];
+            center: {lat: 39.0473, lng:-95.6752},    
+            zoom: 4
+                
+              
+          };
 
-          // Loop thru markers
+          //New map
+          var map = new google.maps.Map(
+                    document.getElementById('map'), options);
 
-          for(var i=0; i < markers.length; i++) {
-             addMarker(markers[i]);
+          var input = document.getElementById('search');
+          var searchBox = new google.maps.places.SearchBox(input);
 
-          }
+          map.addListener('bounds_changed', function() {
+            searchBox.setBounds(map.getBounds());
+          });
 
+          var markers = [];
 
+          searchBox.addListener('places_changed', function () {
+            var places = searchBox.getPlaces();
 
-        //Add Marker Function
-        function addMarker(props){
-            var marker = new google.maps.Marker({
-                position: props.coords,
+            if (places.length == 0)
+              return;
+
+            markers.forEach(function (m) { m.setMap(null); });
+            markers = [];
+
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function(p) {
+              if (!p.geometry)
+                return;
+
+              markers.push(new google.maps.Marker({
                 map: map,
-              //  icon:props.iconImage,
-                title: ' this is my title'
+                title: p.name,
+                position: p.geometry.location
+              }));
 
-            });  
+              if (p.geometry.viewport)
+                bounds.union(p.geometry.viewport);
+              else
+                bounds.extend(p.geometry.location);
+            });
 
-
-             // check for custom icon
-             if(props.iconImage){
-                 //set icon image
-                marker.setIcon(props.iconImage)
-             } 
-
-            // check for content 
-             if(props.content){
-
-               var infowindow = new google.maps.InfoWindow({ 
-
-                  content:props.content,
-                  maxWidth: 250
-               });
-
-
-               marker.addListener('click', function() {
-                infowindow.open(map, marker);
-               });
-             }  
-
-          }
-
-      }
-
-    </script>  
+            map.fitBounds(bounds);
+          });
+        }  
+        
+        
+    </script>    
+        
     
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjjqAQGdfDe98HEoWV_Sw35ThI-S2QwlY&callback=initMap">
-    </script>       
+       
     
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjjqAQGdfDe98HEoWV_Sw35ThI-S2QwlY&callback=createMap&libraries=places"></script>    
+        
         
     <footer>
-      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 18 July 2019 </p>
+      <p>Copyright &copy; 2019 Denise Goetz &nbsp; - &nbsp; Last updated: 24 July 2019 </p>
          
     </footer>
      <script src="js/topic16.js"></script>       
